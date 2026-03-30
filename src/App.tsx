@@ -1,19 +1,17 @@
 import { useMemo, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import { initialCvData } from './cvData'
-import { cvSchema, type CvData, type Locale } from './cvSchema'
+import type { CvData, Locale } from './cvSchema'
 import './App.css'
 
 const labels = {
   es: {
-    education: 'Formacion',
+    education: 'Formación',
     experience: 'Experiencia laboral',
     courses: 'Cursos destacados',
     languages: 'Idiomas',
-    technologies: 'Tecnologias y herramientas',
-    addExperience: 'Anadir experiencia',
-    importJson: 'Importar JSON',
-    exportJson: 'Exportar JSON',
+    technologies: 'Tecnologías y herramientas',
+    addExperience: 'Añadir experiencia',
     printPdf: 'Descargar PDF A4',
     profile: 'Perfil',
     manageExperiences: 'Gestionar experiencias',
@@ -21,6 +19,12 @@ const labels = {
     save: 'Guardar',
     cancel: 'Cancelar',
     close: 'Cerrar',
+    addContent: 'Añadir contenido',
+    selectSection: 'Selecciona sección',
+    sectionExperience: 'Experiencia',
+    sectionEducation: 'Formación',
+    sectionCourses: 'Cursos',
+    comingSoon: 'Próximamente',
   },
   en: {
     education: 'Education',
@@ -29,8 +33,6 @@ const labels = {
     languages: 'Languages',
     technologies: 'Technologies and tools',
     addExperience: 'Add experience',
-    importJson: 'Import JSON',
-    exportJson: 'Export JSON',
     printPdf: 'Download A4 PDF',
     profile: 'Profile',
     manageExperiences: 'Manage experiences',
@@ -38,6 +40,12 @@ const labels = {
     save: 'Save',
     cancel: 'Cancel',
     close: 'Close',
+    addContent: 'Add content',
+    selectSection: 'Select section',
+    sectionExperience: 'Experience',
+    sectionEducation: 'Education',
+    sectionCourses: 'Courses',
+    comingSoon: 'Coming soon',
   },
 } as const
 
@@ -49,13 +57,25 @@ function ExperienceBlock({
   exp,
   locale,
   technologiesLabel,
+  onEdit,
 }: {
   exp: CvData['experiences'][number]
   locale: Locale
   technologiesLabel: string
+  onEdit?: () => void
 }) {
   return (
     <div className="item experience-item" key={`${exp.company.es}-${exp.period.from}`}>
+      {onEdit ? (
+        <button
+          type="button"
+          className="edit-chip no-print"
+          onClick={onEdit}
+          aria-label="Edit experience"
+        >
+          ✎
+        </button>
+      ) : null}
       <div className="item-head">
         <strong>{localize(locale, exp.role)}</strong>
         <span>
@@ -80,6 +100,7 @@ function App() {
   const [locale, setLocale] = useState<Locale>('es')
   const [cvData, setCvData] = useState<CvData>(initialCvData)
   const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false)
+  const [isAddSectionModalOpen, setIsAddSectionModalOpen] = useState(false)
   const [photoLoadError, setPhotoLoadError] = useState(false)
   const [qrLoadError, setQrLoadError] = useState(false)
   const [editingExperienceIndex, setEditingExperienceIndex] = useState<number | null>(null)
@@ -102,33 +123,6 @@ function App() {
 
   const firstPageExperiences = useMemo(() => cvData.experiences.slice(0, 3), [cvData.experiences])
   const secondPageExperiences = useMemo(() => cvData.experiences.slice(3), [cvData.experiences])
-
-  const exportJson = () => {
-    const blob = new Blob([JSON.stringify(cvData, null, 2)], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = `cv-data-${locale}.json`
-    a.click()
-    URL.revokeObjectURL(url)
-  }
-
-  const importJson: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const file = event.target.files?.[0]
-    if (!file) return
-    const reader = new FileReader()
-    reader.onload = () => {
-      try {
-        const parsed = JSON.parse(String(reader.result))
-        const validated = cvSchema.parse(parsed)
-        setCvData(validated)
-      } catch {
-        alert('JSON invalido para el schema de CV.')
-      }
-    }
-    reader.readAsText(file)
-    event.target.value = ''
-  }
 
   const openNewExperienceModal = () => {
     setEditingExperienceIndex(null)
@@ -198,6 +192,16 @@ function App() {
     setIsExperienceModalOpen(false)
   }
 
+  const openAddBySection = (section: 'experience' | 'education' | 'courses') => {
+    if (section === 'experience') {
+      setIsAddSectionModalOpen(false)
+      openNewExperienceModal()
+      return
+    }
+
+    alert(labels[locale].comingSoon)
+  }
+
   return (
     <div className="app">
       <header className="toolbar no-print">
@@ -221,13 +225,6 @@ function App() {
           <button type="button" onClick={handlePrint}>
             {labels[locale].printPdf}
           </button>
-          <button type="button" onClick={exportJson}>
-            {labels[locale].exportJson}
-          </button>
-          <label className="import-label">
-            {labels[locale].importJson}
-            <input type="file" accept=".json" onChange={importJson} />
-          </label>
         </div>
       </header>
 
@@ -299,22 +296,29 @@ function App() {
                   ))}
                 </section>
                 <section>
-                  <h2>{labels[locale].experience}</h2>
+                  <div className="section-header">
+                    <h2>{labels[locale].experience}</h2>
+                    <button
+                      type="button"
+                      className="section-plus no-print"
+                      onClick={openNewExperienceModal}
+                    >
+                      +
+                    </button>
+                  </div>
                   {firstPageExperiences.map((exp) => (
                     <ExperienceBlock
                       key={`${exp.company.es}-${exp.period.from}`}
                       exp={exp}
                       locale={locale}
                       technologiesLabel={labels[locale].technologies}
+                      onEdit={() => openEditExperienceModal(cvData.experiences.indexOf(exp))}
                     />
                   ))}
                 </section>
                 <div className="no-print section-actions">
-                  <button type="button" onClick={openNewExperienceModal}>
-                    {labels[locale].addExperience}
-                  </button>
-                  <button type="button" onClick={() => setIsExperienceModalOpen(true)}>
-                    {labels[locale].manageExperiences}
+                  <button type="button" onClick={() => setIsAddSectionModalOpen(true)}>
+                    + {labels[locale].addContent}
                   </button>
                 </div>
               </section>
@@ -332,7 +336,9 @@ function App() {
                       <p key={course.title}>
                         {course.title}
                         <br />
-                        {locale === 'es' ? 'Duracion' : 'Length'}: {course.length}
+                        {locale === 'es' ? 'Duración' : 'Length'}: {course.length}
+                        <br />
+                        {course.author}
                       </p>
                     ))}
                   </div>
@@ -347,6 +353,7 @@ function App() {
                       exp={exp}
                       locale={locale}
                       technologiesLabel={labels[locale].technologies}
+                      onEdit={() => openEditExperienceModal(cvData.experiences.indexOf(exp))}
                     />
                   ))}
                 </section>
@@ -504,6 +511,30 @@ function App() {
               </button>
               <button type="button" onClick={() => setIsExperienceModalOpen(false)}>
                 {labels[locale].cancel}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {isAddSectionModalOpen ? (
+        <div className="modal-overlay no-print" role="dialog" aria-modal="true">
+          <div className="modal-card add-section-card">
+            <div className="modal-header">
+              <h3>{labels[locale].selectSection}</h3>
+              <button type="button" onClick={() => setIsAddSectionModalOpen(false)}>
+                {labels[locale].close}
+              </button>
+            </div>
+            <div className="add-section-grid">
+              <button type="button" onClick={() => openAddBySection('experience')}>
+                + {labels[locale].sectionExperience}
+              </button>
+              <button type="button" onClick={() => openAddBySection('education')}>
+                + {labels[locale].sectionEducation}
+              </button>
+              <button type="button" onClick={() => openAddBySection('courses')}>
+                + {labels[locale].sectionCourses}
               </button>
             </div>
           </div>

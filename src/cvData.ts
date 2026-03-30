@@ -95,6 +95,10 @@ export const initialCvData: CvData = {
           en: 'Implemented Figma designs while preserving existing functionality.',
         },
         {
+          es: 'Desarrollo de nuevas funcionalidades y mejoras UI con Styled Components y Storybook.',
+          en: 'Developed new features and UI improvements with Styled Components and Storybook.',
+        },
+        {
           es: 'Testing con Jest, React Testing Library y Enzyme.',
           en: 'Implemented testing with Jest, React Testing Library, and Enzyme.',
         },
@@ -131,6 +135,10 @@ export const initialCvData: CvData = {
           es: 'Integración de Azure, Chart.js, OpenLayers, AG Grid y DevExtreme en un entorno React.',
           en: 'Integrated Azure, Chart.js, OpenLayers, AG Grid, and DevExtreme in a React environment.',
         },
+        {
+          es: 'Gestión de estado global con Redux para mapas y Context API para autenticación e industrias.',
+          en: 'Managed global state with Redux for maps and Context API for authentication and industries.',
+        },
       ],
       technologies: ['React', 'TypeScript', 'Redux', 'Azure', 'Chart.js', 'OpenLayers', 'AG Grid'],
     },
@@ -149,7 +157,7 @@ export const initialCvData: CvData = {
       bullets: [
         {
           es: 'Creación de microservicio SaaS API REST para cálculo de costes.',
-          en: 'Created a SaaS REST API microservice for cost calculation.',
+          en: 'Built a SaaS REST API microservice for transport cost calculation.',
         },
         {
           es: 'Integración con agencias mediante servicios REST, SOAP y XML.',
@@ -169,8 +177,12 @@ export const initialCvData: CvData = {
       location: { es: 'España', en: 'Spain' },
       bullets: [
         {
-          es: 'Desarrollo de panel administrativo con rutas públicas y privadas.',
-          en: 'Developed an administration panel with public and private routes.',
+          es: 'Arranque de proyecto para entidades educativas y maquetación con HTML, CSS, SASS, Grid y Flexbox.',
+          en: 'Kickstarted the project for educational entities and implemented layout with HTML, CSS, SASS, Grid, and Flexbox.',
+        },
+        {
+          es: 'Desarrollo de panel administrativo con rutas públicas/privadas y estado con Redux.',
+          en: 'Developed an admin panel with public/private routing and Redux state management.',
         },
       ],
       technologies: ['React', 'TypeScript', 'Redux', 'SASS', 'ESLint'],
@@ -191,6 +203,14 @@ export const initialCvData: CvData = {
         {
           es: 'Desarrollo en VueJS con Docker y metodología ágil semanal.',
           en: 'Developed in VueJS with Docker and weekly agile sprints.',
+        },
+        {
+          es: 'Diseño y maquetación con CSS Grid, Flexbox, SASS y Bootstrap.',
+          en: 'Designed and implemented layouts with CSS Grid, Flexbox, SASS, and Bootstrap.',
+        },
+        {
+          es: 'Intercambio de datos con Vuex y gestión de almacenamiento local/sesión.',
+          en: 'Handled data exchange through Vuex and managed local/session storage.',
         },
       ],
       technologies: ['Vue', 'TypeScript', 'Vuex', 'Docker', 'Bootstrap'],
@@ -213,7 +233,7 @@ export const initialCvData: CvData = {
       bullets: [
         {
           es: 'Atencion al publico y coordinacion diaria de tareas administrativas.',
-          en: 'Handled customer-facing operations and daily administrative coordination.',
+          en: 'Handled customer-facing operations and coordinated daily administrative tasks.',
         },
       ],
       technologies: ['Customer Service', 'Operations'],

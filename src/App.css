@@ -181,6 +181,26 @@ h3 {
   page-break-inside: avoid;
 }
 
+.experience-item {
+  position: relative;
+}
+
+.edit-chip {
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 120ms ease-in-out;
+  font-size: 0.72rem;
+  padding: 0.18rem 0.38rem;
+  border-radius: 999px;
+  line-height: 1;
+}
+
+.experience-item:hover .edit-chip {
+  opacity: 1;
+}
+
 .item strong {
   font-size: 0.82rem;
 }
@@ -240,6 +260,24 @@ h3 {
   display: flex;
   gap: 0.5rem;
   margin-top: 0.5rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.section-plus {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .modal-overlay {
@@ -313,6 +351,16 @@ h3 {
   display: flex;
   gap: 0.5rem;
   margin-top: 0.75rem;
+}
+
+.add-section-card {
+  width: min(520px, 92vw);
+}
+
+.add-section-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
 }
 
 @media (max-width: 1280px) {
