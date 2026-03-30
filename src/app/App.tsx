@@ -2,31 +2,13 @@ import { useMemo, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import { EducationBlock, ExperienceBlock, CourseItem } from '../features/cv/components/blocks'
 import { TopToolbar } from '../features/cv/components/TopToolbar'
-import {
-  CourseModal,
-  EducationModal,
-  ExperienceModal,
-} from '../features/cv/modals/modals'
+import { CourseModal, EducationModal, ExperienceModal } from '../features/cv/modals'
 import { cvFixedConfig, initialCvData } from '../domain/cv-data'
 import { t } from '../shared/ui-labels'
 import { localize } from '../shared/locale-utils'
+import { toDisplayPeriod, toMonthInputValue } from '../shared/date-utils'
 import type { CvData, Locale } from '../domain/cv-schema'
 import './App.css'
-
-function toMonthInputValue(value: string) {
-  if (/^\d{4}-\d{2}$/.test(value)) return value
-  const match = value.match(/^(\d{2})\/(\d{4})$/)
-  if (!match) return ''
-  const [, month, year] = match
-  return `${year}-${month}`
-}
-
-function toDisplayPeriod(value: string) {
-  const match = value.match(/^(\d{4})-(\d{2})$/)
-  if (!match) return value || 'N/A'
-  const [, year, month] = match
-  return `${month}/${year}`
-}
 
 function App() {
   const [locale, setLocale] = useState<Locale>('es')
@@ -160,24 +142,23 @@ function App() {
     setCourseModalMode('edit')
   }
 
-  const saveExperience = () => {
-    if (!draftExperience.role.es.trim() || !draftExperience.role.en.trim()) return
+  const saveExperience = (nextDraft: typeof draftExperience) => {
     const normalized = {
-      role: { ...draftExperience.role },
-      company: { ...draftExperience.company },
-      project: { ...draftExperience.project },
+      role: { ...nextDraft.role },
+      company: { ...nextDraft.company },
+      project: { ...nextDraft.project },
       period: {
-        from: toDisplayPeriod(draftExperience.from),
-        to: toDisplayPeriod(draftExperience.to),
+        from: toDisplayPeriod(nextDraft.from),
+        to: toDisplayPeriod(nextDraft.to),
       },
       location: { es: 'España', en: 'Spain' },
       bullets: [
         {
-          es: draftExperience.bullet.es || 'Descripcion pendiente.',
-          en: draftExperience.bullet.en || 'Description pending.',
+          es: nextDraft.bullet.es || 'Descripcion pendiente.',
+          en: nextDraft.bullet.en || 'Description pending.',
         },
       ],
-      technologies: draftExperience.technologies
+      technologies: nextDraft.technologies
         .split(',')
         .map((item) => item.trim())
         .filter(Boolean),
@@ -199,15 +180,13 @@ function App() {
     setExperienceModalMode(null)
   }
 
-  const saveEducation = () => {
-    if (!draftEducation.title.es.trim() || !draftEducation.title.en.trim()) return
-
+  const saveEducation = (nextDraft: typeof draftEducation) => {
     const normalized = {
-      title: { ...draftEducation.title },
-      center: { ...draftEducation.center },
+      title: { ...nextDraft.title },
+      center: { ...nextDraft.center },
       period: {
-        from: toDisplayPeriod(draftEducation.from),
-        to: toDisplayPeriod(draftEducation.to),
+        from: toDisplayPeriod(nextDraft.from),
+        to: toDisplayPeriod(nextDraft.to),
       },
     }
 
@@ -225,12 +204,11 @@ function App() {
     setEducationModalMode(null)
   }
 
-  const saveCourse = () => {
-    if (!draftCourse.title.trim()) return
+  const saveCourse = (nextDraft: typeof draftCourse) => {
     const courseItem = {
-      title: draftCourse.title,
-      length: draftCourse.length,
-      author: draftCourse.author,
+      title: nextDraft.title,
+      length: nextDraft.length,
+      author: nextDraft.author,
     }
 
     setCvData((prev) => {
@@ -246,16 +224,16 @@ function App() {
         return { ...prev, courses: nextCourses }
       }
 
-      if (draftCourse.categoryIndex === 'new') {
+      if (nextDraft.categoryIndex === 'new') {
         nextCourses.push({
           name: {
-            es: draftCourse.categoryEs || 'Nueva categoría',
-            en: draftCourse.categoryEn || 'New category',
+            es: nextDraft.categoryEs || 'Nueva categoría',
+            en: nextDraft.categoryEn || 'New category',
           },
           items: [courseItem],
         })
       } else {
-        const index = Number(draftCourse.categoryIndex)
+        const index = Number(nextDraft.categoryIndex)
         nextCourses[index] = {
           ...nextCourses[index],
           items: [courseItem, ...nextCourses[index].items],
@@ -424,7 +402,6 @@ function App() {
           locale={locale}
           title={experienceModalMode === 'add' ? labels.addExperience : labels.manageExperiences}
           draft={draftExperience}
-          onDraftChange={setDraftExperience}
           onClose={() => setExperienceModalMode(null)}
           onSave={saveExperience}
           saveLabel={experienceModalMode === 'add' ? labels.addExperience : labels.save}
@@ -436,7 +413,6 @@ function App() {
           locale={locale}
           title={educationModalMode === 'add' ? labels.addEducation : labels.manageEducation}
           draft={draftEducation}
-          onDraftChange={setDraftEducation}
           onSave={saveEducation}
           onClose={() => setEducationModalMode(null)}
           saveLabel={educationModalMode === 'add' ? labels.addEducation : labels.save}
@@ -449,7 +425,6 @@ function App() {
           title={courseModalMode === 'add' ? labels.addCourse : labels.manageCourses}
           courses={cvData.courses}
           draft={draftCourse}
-          onDraftChange={setDraftCourse}
           onSave={saveCourse}
           onClose={() => setCourseModalMode(null)}
           saveLabel={courseModalMode === 'add' ? labels.addCourse : labels.save}
