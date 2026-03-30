@@ -65,10 +65,10 @@ export function EducationBlock({
           ✎
         </button>
       ) : null}
-      <strong>{localize(locale, item.title)}</strong>
-      <span>
-        {item.period.from} - {item.period.to}
-      </span>
+      <div className="item-head">
+        <strong>{localize(locale, item.title)}</strong>
+        <span>{item.period.from} - {item.period.to}</span>
+      </div>
       <p>{localize(locale, item.center)}</p>
     </div>
   )
@@ -88,7 +88,7 @@ export function CourseItem({
   onEdit?: () => void
 }) {
   return (
-    <p className="course-item-wrap">
+    <article className="course-item-wrap">
       {onEdit ? (
         <button
           type="button"
@@ -99,11 +99,11 @@ export function CourseItem({
           ✎
         </button>
       ) : null}
-      {title}
-      <br />
-      {durationLabel}: {length}
-      <br />
-      {author}
-    </p>
+      <p className="course-item-title">{title}</p>
+      <p className="course-item-meta">
+        <span className="course-meta-label">{durationLabel}:</span> {length}
+      </p>
+      <p className="course-item-author">{author}</p>
+    </article>
   )
 }

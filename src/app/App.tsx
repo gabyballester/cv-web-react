@@ -3,7 +3,6 @@ import { useReactToPrint } from 'react-to-print'
 import { EducationBlock, ExperienceBlock, CourseItem } from '../features/cv/components/blocks'
 import { TopToolbar } from '../features/cv/components/TopToolbar'
 import {
-  AddSectionModal,
   CourseModal,
   EducationModal,
   ExperienceModal,
@@ -14,13 +13,27 @@ import { localize } from '../shared/locale-utils'
 import type { CvData, Locale } from '../domain/cv-schema'
 import './App.css'
 
+function toMonthInputValue(value: string) {
+  if (/^\d{4}-\d{2}$/.test(value)) return value
+  const match = value.match(/^(\d{2})\/(\d{4})$/)
+  if (!match) return ''
+  const [, month, year] = match
+  return `${year}-${month}`
+}
+
+function toDisplayPeriod(value: string) {
+  const match = value.match(/^(\d{4})-(\d{2})$/)
+  if (!match) return value || 'N/A'
+  const [, year, month] = match
+  return `${month}/${year}`
+}
+
 function App() {
   const [locale, setLocale] = useState<Locale>('es')
   const [cvData, setCvData] = useState<CvData>(initialCvData)
   const [experienceModalMode, setExperienceModalMode] = useState<'add' | 'edit' | null>(null)
   const [educationModalMode, setEducationModalMode] = useState<'add' | 'edit' | null>(null)
   const [courseModalMode, setCourseModalMode] = useState<'add' | 'edit' | null>(null)
-  const [isAddSectionModalOpen, setIsAddSectionModalOpen] = useState(false)
   const [photoLoadError, setPhotoLoadError] = useState(false)
   const [qrLoadError, setQrLoadError] = useState(false)
   const [editingExperienceIndex, setEditingExperienceIndex] = useState<number | null>(null)
@@ -35,14 +48,14 @@ function App() {
     project: { es: '', en: '' },
     bullet: { es: '', en: '' },
     technologies: 'React, TypeScript',
-    from: 'MM/YYYY',
-    to: 'Present',
+    from: '',
+    to: '',
   })
   const [draftEducation, setDraftEducation] = useState({
     title: { es: '', en: '' },
     center: { es: '', en: '' },
-    from: 'MM/YYYY',
-    to: 'MM/YYYY',
+    from: '',
+    to: '',
   })
   const [draftCourse, setDraftCourse] = useState({
     categoryIndex: '0',
@@ -72,8 +85,8 @@ function App() {
       project: { es: '', en: '' },
       bullet: { es: '', en: '' },
       technologies: 'React, TypeScript',
-      from: 'MM/YYYY',
-      to: 'Present',
+      from: '',
+      to: '',
     })
     setExperienceModalMode('add')
   }
@@ -83,8 +96,8 @@ function App() {
     setDraftEducation({
       title: { es: '', en: '' },
       center: { es: '', en: '' },
-      from: 'MM/YYYY',
-      to: 'MM/YYYY',
+      from: '',
+      to: '',
     })
     setEducationModalMode('add')
   }
@@ -114,8 +127,8 @@ function App() {
         en: target.bullets[0]?.en ?? '',
       },
       technologies: target.technologies.join(', '),
-      from: target.period.from,
-      to: target.period.to,
+      from: toMonthInputValue(target.period.from),
+      to: toMonthInputValue(target.period.to),
     })
     setExperienceModalMode('edit')
   }
@@ -126,8 +139,8 @@ function App() {
     setDraftEducation({
       title: { ...target.title },
       center: { ...target.center },
-      from: target.period.from,
-      to: target.period.to,
+      from: toMonthInputValue(target.period.from),
+      to: toMonthInputValue(target.period.to),
     })
     setEducationModalMode('edit')
   }
@@ -153,7 +166,10 @@ function App() {
       role: { ...draftExperience.role },
       company: { ...draftExperience.company },
       project: { ...draftExperience.project },
-      period: { from: draftExperience.from, to: draftExperience.to },
+      period: {
+        from: toDisplayPeriod(draftExperience.from),
+        to: toDisplayPeriod(draftExperience.to),
+      },
       location: { es: 'España', en: 'Spain' },
       bullets: [
         {
@@ -189,7 +205,10 @@ function App() {
     const normalized = {
       title: { ...draftEducation.title },
       center: { ...draftEducation.center },
-      period: { from: draftEducation.from, to: draftEducation.to },
+      period: {
+        from: toDisplayPeriod(draftEducation.from),
+        to: toDisplayPeriod(draftEducation.to),
+      },
     }
 
     setCvData((prev) => {
@@ -246,13 +265,6 @@ function App() {
       return { ...prev, courses: nextCourses }
     })
     setCourseModalMode(null)
-  }
-
-  const openAddBySection = (section: 'experience' | 'education' | 'courses') => {
-    setIsAddSectionModalOpen(false)
-    if (section === 'experience') openNewExperienceModal()
-    if (section === 'education') openNewEducationModal()
-    if (section === 'courses') openNewCourseModal()
   }
 
   return (
@@ -355,11 +367,6 @@ function App() {
                     />
                   ))}
                 </section>
-                <div className="no-print section-actions">
-                  <button type="button" onClick={() => setIsAddSectionModalOpen(true)}>
-                    + {labels.addContent}
-                  </button>
-                </div>
               </section>
             </div>
           </article>
@@ -377,9 +384,9 @@ function App() {
                     +
                   </button>
                 </div>
-                {cvData.courses.map((category) => (
+                {cvData.courses.map((category, categoryIndex) => (
                   <div key={category.name.es} className="course-category">
-                    <strong>{localize(locale, category.name)}</strong>
+                    <h4 className="course-category-title">{localize(locale, category.name)}</h4>
                     {category.items.map((course, itemIndex) => (
                       <CourseItem
                         key={course.title}
@@ -387,9 +394,7 @@ function App() {
                         durationLabel={labels.duration}
                         length={course.length}
                         author={course.author}
-                        onEdit={() =>
-                          openEditCourseModal(cvData.courses.indexOf(category), itemIndex)
-                        }
+                        onEdit={() => openEditCourseModal(categoryIndex, itemIndex)}
                       />
                     ))}
                   </div>
@@ -451,13 +456,6 @@ function App() {
         />
       ) : null}
 
-      {isAddSectionModalOpen ? (
-        <AddSectionModal
-          locale={locale}
-          onClose={() => setIsAddSectionModalOpen(false)}
-          onSelect={openAddBySection}
-        />
-      ) : null}
     </div>
   )
 }

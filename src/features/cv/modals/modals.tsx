@@ -28,41 +28,6 @@ type CourseDraft = {
   author: string
 }
 
-export function AddSectionModal({
-  locale,
-  onClose,
-  onSelect,
-}: {
-  locale: Locale
-  onClose: () => void
-  onSelect: (section: 'experience' | 'education' | 'courses') => void
-}) {
-  const labels = t(locale)
-  return (
-    <div className="modal-overlay no-print" role="dialog" aria-modal="true">
-      <div className="modal-card add-section-card">
-        <div className="modal-header">
-          <h3>{labels.selectSection}</h3>
-          <button type="button" onClick={onClose}>
-            {labels.close}
-          </button>
-        </div>
-        <div className="add-section-grid">
-          <button type="button" onClick={() => onSelect('experience')}>
-            + {labels.sectionExperience}
-          </button>
-          <button type="button" onClick={() => onSelect('education')}>
-            + {labels.sectionEducation}
-          </button>
-          <button type="button" onClick={() => onSelect('courses')}>
-            + {labels.sectionCourses}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export function ExperienceModal({
   locale,
   title,
@@ -154,12 +119,14 @@ export function ExperienceModal({
           />
           <div className="modal-period">
             <input
-              placeholder="From MM/YYYY"
+              type="month"
+              aria-label="From"
               value={draft.from}
               onChange={(e) => onDraftChange({ ...draft, from: e.target.value })}
             />
             <input
-              placeholder="To"
+              type="month"
+              aria-label="To"
               value={draft.to}
               onChange={(e) => onDraftChange({ ...draft, to: e.target.value })}
             />
@@ -236,12 +203,14 @@ export function EducationModal({
           />
           <div className="modal-period">
             <input
-              placeholder="From MM/YYYY"
+              type="month"
+              aria-label="From"
               value={draft.from}
               onChange={(e) => onDraftChange({ ...draft, from: e.target.value })}
             />
             <input
-              placeholder="To"
+              type="month"
+              aria-label="To"
               value={draft.to}
               onChange={(e) => onDraftChange({ ...draft, to: e.target.value })}
             />
