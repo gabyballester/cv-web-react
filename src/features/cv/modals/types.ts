@@ -2,7 +2,7 @@ export type ExperienceDraft = {
   role: { es: string; en: string }
   company: { es: string; en: string }
   project: { es: string; en: string }
-  bullet: { es: string; en: string }
+  bullets: Array<{ es: string; en: string }>
   technologies: string
   from: string
   to: string
@@ -23,3 +23,5 @@ export type CourseDraft = {
   length: string
   author: string
 }
+
+export type CourseAppendValues = Pick<CourseDraft, 'title' | 'length' | 'author'>

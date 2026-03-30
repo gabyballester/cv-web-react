@@ -4,10 +4,11 @@ import { t } from '../../../shared/ui-labels'
 type Props = {
   locale: Locale
   onLocaleChange: (locale: Locale) => void
-  onPrint: () => void
+  onDownloadPdf: () => void | Promise<void>
+  pdfExporting?: boolean
 }
 
-export function TopToolbar({ locale, onLocaleChange, onPrint }: Props) {
+export function TopToolbar({ locale, onLocaleChange, onDownloadPdf, pdfExporting }: Props) {
   const labels = t(locale)
   return (
     <header className="toolbar no-print">
@@ -28,8 +29,8 @@ export function TopToolbar({ locale, onLocaleChange, onPrint }: Props) {
         </button>
       </div>
       <div className="toolbar-right">
-        <button type="button" onClick={onPrint}>
-          {labels.printPdf}
+        <button type="button" onClick={() => void onDownloadPdf()} disabled={pdfExporting}>
+          {pdfExporting ? '…' : labels.printPdf}
         </button>
       </div>
     </header>

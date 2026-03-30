@@ -5,6 +5,11 @@ export const labels = {
     education: 'Formación',
     experience: 'Experiencia laboral',
     courses: 'Cursos destacados',
+    contactData: 'Datos de contacto',
+    professionalSummary: 'Resumen profesional',
+    coreExpertise: 'Competencias clave',
+    coreExpertiseFootnote:
+      'Años orientativos en roles de producto (frontend); el gráfico muestra peso relativo. No incluye trayectoria no relacionada.',
     languages: 'Idiomas',
     technologies: 'Tecnologías y herramientas',
     addExperience: 'Añadir experiencia',
@@ -26,6 +31,11 @@ export const labels = {
     education: 'Education',
     experience: 'Work experience',
     courses: 'Highlighted courses',
+    contactData: 'Contact details',
+    professionalSummary: 'Professional summary',
+    coreExpertise: 'Core expertise',
+    coreExpertiseFootnote:
+      'Approximate years in product-facing frontend roles; the chart shows relative weight. Non-tech history excluded.',
     languages: 'Languages',
     technologies: 'Technologies and tools',
     addExperience: 'Add experience',

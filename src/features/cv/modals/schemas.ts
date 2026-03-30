@@ -6,7 +6,9 @@ export const experienceDraftSchema = z.object({
   role: z.object({ es: requiredText, en: requiredText }),
   company: z.object({ es: z.string(), en: z.string() }),
   project: z.object({ es: z.string(), en: z.string() }),
-  bullet: z.object({ es: z.string(), en: z.string() }),
+  bullets: z
+    .array(z.object({ es: z.string(), en: z.string() }))
+    .min(1, 'At least one bullet is required'),
   technologies: z.string(),
   from: z.string(),
   to: z.string(),
@@ -17,6 +19,12 @@ export const educationDraftSchema = z.object({
   center: z.object({ es: z.string(), en: z.string() }),
   from: z.string(),
   to: z.string(),
+})
+
+export const courseAppendSchema = z.object({
+  title: requiredText,
+  length: z.string(),
+  author: z.string(),
 })
 
 export const courseDraftSchema = z
