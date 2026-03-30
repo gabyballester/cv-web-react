@@ -1,0 +1,11 @@
+{
+  "name": "cv-web-react-root",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --dir app dev",
+    "build": "pnpm --dir app build",
+    "lint": "pnpm --dir app lint",
+    "typecheck": "pnpm --dir app typecheck",
+    "preview": "pnpm --dir app preview"
+  }
+}
