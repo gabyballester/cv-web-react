@@ -16,6 +16,12 @@ const labels = {
     exportJson: 'Exportar JSON',
     printPdf: 'Descargar PDF A4',
     darkTheme: 'Tema oscuro',
+    profile: 'Perfil',
+    manageExperiences: 'Gestionar experiencias',
+    edit: 'Editar',
+    save: 'Guardar',
+    cancel: 'Cancelar',
+    close: 'Cerrar',
   },
   en: {
     education: 'Education',
@@ -28,6 +34,12 @@ const labels = {
     exportJson: 'Export JSON',
     printPdf: 'Download A4 PDF',
     darkTheme: 'Dark theme',
+    profile: 'Profile',
+    manageExperiences: 'Manage experiences',
+    edit: 'Edit',
+    save: 'Save',
+    cancel: 'Cancel',
+    close: 'Close',
   },
 } as const
 
@@ -35,14 +47,52 @@ function localize(locale: Locale, value: { es: string; en: string }) {
   return value[locale]
 }
 
+function ExperienceBlock({
+  exp,
+  locale,
+  technologiesLabel,
+}: {
+  exp: CvData['experiences'][number]
+  locale: Locale
+  technologiesLabel: string
+}) {
+  return (
+    <div className="item experience-item" key={`${exp.company.es}-${exp.period.from}`}>
+      <div className="item-head">
+        <strong>{localize(locale, exp.role)}</strong>
+        <span>
+          {exp.period.from} - {exp.period.to}
+        </span>
+      </div>
+      <p className="meta">{localize(locale, exp.company)}</p>
+      <p>{localize(locale, exp.project)}</p>
+      <ul>
+        {exp.bullets.map((b) => (
+          <li key={b.es}>{localize(locale, b)}</li>
+        ))}
+      </ul>
+      <p className="meta">
+        {technologiesLabel}: {exp.technologies.join(' | ')}
+      </p>
+    </div>
+  )
+}
+
 function App() {
   const [locale, setLocale] = useState<Locale>('es')
   const [darkMode, setDarkMode] = useState(false)
   const [cvData, setCvData] = useState<CvData>(initialCvData)
-  const [newExpRole, setNewExpRole] = useState({ es: '', en: '' })
-  const [newExpCompany, setNewExpCompany] = useState({ es: '', en: '' })
-  const [newExpProject, setNewExpProject] = useState({ es: '', en: '' })
-  const [newExpBullets, setNewExpBullets] = useState({ es: '', en: '' })
+  const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false)
+  const [editingExperienceIndex, setEditingExperienceIndex] = useState<number | null>(null)
+  const [draftExperience, setDraftExperience] = useState({
+    role: { es: '', en: '' },
+    company: { es: '', en: '' },
+    project: { es: '', en: '' },
+    bullet: { es: '', en: '' },
+    technologies: 'React, TypeScript',
+    from: 'MM/YYYY',
+    to: 'Present',
+  })
   const printRef = useRef<HTMLDivElement>(null)
 
   const handlePrint = useReactToPrint({
@@ -81,32 +131,72 @@ function App() {
     event.target.value = ''
   }
 
-  const addExperience = () => {
-    if (!newExpRole.es.trim() || !newExpRole.en.trim()) return
-    setCvData((prev) => ({
-      ...prev,
-      experiences: [
+  const openNewExperienceModal = () => {
+    setEditingExperienceIndex(null)
+    setDraftExperience({
+      role: { es: '', en: '' },
+      company: { es: '', en: '' },
+      project: { es: '', en: '' },
+      bullet: { es: '', en: '' },
+      technologies: 'React, TypeScript',
+      from: 'MM/YYYY',
+      to: 'Present',
+    })
+    setIsExperienceModalOpen(true)
+  }
+
+  const openEditExperienceModal = (index: number) => {
+    const target = cvData.experiences[index]
+    setEditingExperienceIndex(index)
+    setDraftExperience({
+      role: { ...target.role },
+      company: { ...target.company },
+      project: { ...target.project },
+      bullet: {
+        es: target.bullets[0]?.es ?? '',
+        en: target.bullets[0]?.en ?? '',
+      },
+      technologies: target.technologies.join(', '),
+      from: target.period.from,
+      to: target.period.to,
+    })
+    setIsExperienceModalOpen(true)
+  }
+
+  const saveExperience = () => {
+    if (!draftExperience.role.es.trim() || !draftExperience.role.en.trim()) return
+    const normalized = {
+      role: { ...draftExperience.role },
+      company: { ...draftExperience.company },
+      project: { ...draftExperience.project },
+      period: { from: draftExperience.from, to: draftExperience.to },
+      location: { es: 'España', en: 'Spain' },
+      bullets: [
         {
-          role: { ...newExpRole },
-          company: { ...newExpCompany },
-          project: { ...newExpProject },
-          period: { from: 'MM/YYYY', to: locale === 'es' ? 'Actualidad' : 'Present' },
-          location: { es: 'España', en: 'Spain' },
-          bullets: [
-            {
-              es: newExpBullets.es || 'Descripcion pendiente.',
-              en: newExpBullets.en || 'Description pending.',
-            },
-          ],
-          technologies: ['React', 'TypeScript'],
+          es: draftExperience.bullet.es || 'Descripcion pendiente.',
+          en: draftExperience.bullet.en || 'Description pending.',
         },
-        ...prev.experiences,
       ],
-    }))
-    setNewExpRole({ es: '', en: '' })
-    setNewExpCompany({ es: '', en: '' })
-    setNewExpProject({ es: '', en: '' })
-    setNewExpBullets({ es: '', en: '' })
+      technologies: draftExperience.technologies
+        .split(',')
+        .map((item) => item.trim())
+        .filter(Boolean),
+    }
+
+    setCvData((prev) => {
+      if (editingExperienceIndex === null) {
+        return { ...prev, experiences: [normalized, ...prev.experiences] }
+      }
+
+      return {
+        ...prev,
+        experiences: prev.experiences.map((item, idx) =>
+          idx === editingExperienceIndex ? normalized : item,
+        ),
+      }
+    })
+
+    setIsExperienceModalOpen(false)
   }
 
   return (
@@ -151,58 +241,12 @@ function App() {
       </header>
 
       <main className="layout">
-        <aside className="editor no-print">
-          <h2>{labels[locale].addExperience}</h2>
-          <input
-            placeholder="Role ES"
-            value={newExpRole.es}
-            onChange={(e) => setNewExpRole((prev) => ({ ...prev, es: e.target.value }))}
-          />
-          <input
-            placeholder="Role EN"
-            value={newExpRole.en}
-            onChange={(e) => setNewExpRole((prev) => ({ ...prev, en: e.target.value }))}
-          />
-          <input
-            placeholder="Company ES"
-            value={newExpCompany.es}
-            onChange={(e) => setNewExpCompany((prev) => ({ ...prev, es: e.target.value }))}
-          />
-          <input
-            placeholder="Company EN"
-            value={newExpCompany.en}
-            onChange={(e) => setNewExpCompany((prev) => ({ ...prev, en: e.target.value }))}
-          />
-          <input
-            placeholder="Project ES"
-            value={newExpProject.es}
-            onChange={(e) => setNewExpProject((prev) => ({ ...prev, es: e.target.value }))}
-          />
-          <input
-            placeholder="Project EN"
-            value={newExpProject.en}
-            onChange={(e) => setNewExpProject((prev) => ({ ...prev, en: e.target.value }))}
-          />
-          <textarea
-            placeholder="Bullet ES"
-            value={newExpBullets.es}
-            onChange={(e) => setNewExpBullets((prev) => ({ ...prev, es: e.target.value }))}
-          />
-          <textarea
-            placeholder="Bullet EN"
-            value={newExpBullets.en}
-            onChange={(e) => setNewExpBullets((prev) => ({ ...prev, en: e.target.value }))}
-          />
-          <button type="button" onClick={addExperience}>
-            {labels[locale].addExperience}
-          </button>
-        </aside>
-
         <section className="paper-stack" ref={printRef}>
           <article className="a4-page">
             <div className="cv-grid">
               <aside className="cv-sidebar">
                 <div className="photo-placeholder">GB</div>
+                <h3>{labels[locale].profile}</h3>
                 {cvData.profile.quotes.map((q) => (
                   <p key={q.es} className="quote">
                     "{localize(locale, q)}"
@@ -241,29 +285,22 @@ function App() {
                 <section>
                   <h2>{labels[locale].experience}</h2>
                   {firstPageExperiences.map((exp) => (
-                    <div
-                      className="item experience-item"
+                    <ExperienceBlock
                       key={`${exp.company.es}-${exp.period.from}`}
-                    >
-                      <div className="item-head">
-                        <strong>{localize(locale, exp.role)}</strong>
-                        <span>
-                          {exp.period.from} - {exp.period.to}
-                        </span>
-                      </div>
-                      <p className="meta">{localize(locale, exp.company)}</p>
-                      <p>{localize(locale, exp.project)}</p>
-                      <ul>
-                        {exp.bullets.map((b) => (
-                          <li key={b.es}>{localize(locale, b)}</li>
-                        ))}
-                      </ul>
-                      <p className="meta">
-                        {labels[locale].technologies}: {exp.technologies.join(' | ')}
-                      </p>
-                    </div>
+                      exp={exp}
+                      locale={locale}
+                      technologiesLabel={labels[locale].technologies}
+                    />
                   ))}
                 </section>
+                <div className="no-print section-actions">
+                  <button type="button" onClick={openNewExperienceModal}>
+                    {labels[locale].addExperience}
+                  </button>
+                  <button type="button" onClick={() => setIsExperienceModalOpen(true)}>
+                    {labels[locale].manageExperiences}
+                  </button>
+                </div>
               </section>
             </div>
           </article>
@@ -289,27 +326,12 @@ function App() {
                 <section>
                   <h2>{labels[locale].experience}</h2>
                   {secondPageExperiences.map((exp) => (
-                    <div
-                      className="item experience-item"
+                    <ExperienceBlock
                       key={`${exp.company.es}-${exp.period.from}`}
-                    >
-                      <div className="item-head">
-                        <strong>{localize(locale, exp.role)}</strong>
-                        <span>
-                          {exp.period.from} - {exp.period.to}
-                        </span>
-                      </div>
-                      <p className="meta">{localize(locale, exp.company)}</p>
-                      <p>{localize(locale, exp.project)}</p>
-                      <ul>
-                        {exp.bullets.map((b) => (
-                          <li key={b.es}>{localize(locale, b)}</li>
-                        ))}
-                      </ul>
-                      <p className="meta">
-                        {labels[locale].technologies}: {exp.technologies.join(' | ')}
-                      </p>
-                    </div>
+                      exp={exp}
+                      locale={locale}
+                      technologiesLabel={labels[locale].technologies}
+                    />
                   ))}
                 </section>
               </section>
@@ -317,6 +339,160 @@ function App() {
           </article>
         </section>
       </main>
+
+      {isExperienceModalOpen ? (
+        <div className="modal-overlay no-print" role="dialog" aria-modal="true">
+          <div className="modal-card">
+            <div className="modal-header">
+              <h3>{labels[locale].manageExperiences}</h3>
+              <button type="button" onClick={() => setIsExperienceModalOpen(false)}>
+                {labels[locale].close}
+              </button>
+            </div>
+
+            <div className="modal-list">
+              {cvData.experiences.map((exp, index) => (
+                <div
+                  className="modal-list-item"
+                  key={`${exp.company.es}-${exp.period.from}-${index}`}
+                >
+                  <span>{localize(locale, exp.role)}</span>
+                  <button type="button" onClick={() => openEditExperienceModal(index)}>
+                    {labels[locale].edit}
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            <div className="modal-form">
+              <input
+                placeholder="Role ES"
+                value={draftExperience.role.es}
+                onChange={(e) =>
+                  setDraftExperience((prev) => ({
+                    ...prev,
+                    role: { ...prev.role, es: e.target.value },
+                  }))
+                }
+              />
+              <input
+                placeholder="Role EN"
+                value={draftExperience.role.en}
+                onChange={(e) =>
+                  setDraftExperience((prev) => ({
+                    ...prev,
+                    role: { ...prev.role, en: e.target.value },
+                  }))
+                }
+              />
+              <input
+                placeholder="Company ES"
+                value={draftExperience.company.es}
+                onChange={(e) =>
+                  setDraftExperience((prev) => ({
+                    ...prev,
+                    company: { ...prev.company, es: e.target.value },
+                  }))
+                }
+              />
+              <input
+                placeholder="Company EN"
+                value={draftExperience.company.en}
+                onChange={(e) =>
+                  setDraftExperience((prev) => ({
+                    ...prev,
+                    company: { ...prev.company, en: e.target.value },
+                  }))
+                }
+              />
+              <input
+                placeholder="Project ES"
+                value={draftExperience.project.es}
+                onChange={(e) =>
+                  setDraftExperience((prev) => ({
+                    ...prev,
+                    project: { ...prev.project, es: e.target.value },
+                  }))
+                }
+              />
+              <input
+                placeholder="Project EN"
+                value={draftExperience.project.en}
+                onChange={(e) =>
+                  setDraftExperience((prev) => ({
+                    ...prev,
+                    project: { ...prev.project, en: e.target.value },
+                  }))
+                }
+              />
+              <textarea
+                placeholder="Bullet ES"
+                value={draftExperience.bullet.es}
+                onChange={(e) =>
+                  setDraftExperience((prev) => ({
+                    ...prev,
+                    bullet: { ...prev.bullet, es: e.target.value },
+                  }))
+                }
+              />
+              <textarea
+                placeholder="Bullet EN"
+                value={draftExperience.bullet.en}
+                onChange={(e) =>
+                  setDraftExperience((prev) => ({
+                    ...prev,
+                    bullet: { ...prev.bullet, en: e.target.value },
+                  }))
+                }
+              />
+              <input
+                placeholder="Tech comma separated"
+                value={draftExperience.technologies}
+                onChange={(e) =>
+                  setDraftExperience((prev) => ({
+                    ...prev,
+                    technologies: e.target.value,
+                  }))
+                }
+              />
+              <div className="modal-period">
+                <input
+                  placeholder="From MM/YYYY"
+                  value={draftExperience.from}
+                  onChange={(e) =>
+                    setDraftExperience((prev) => ({
+                      ...prev,
+                      from: e.target.value,
+                    }))
+                  }
+                />
+                <input
+                  placeholder="To"
+                  value={draftExperience.to}
+                  onChange={(e) =>
+                    setDraftExperience((prev) => ({
+                      ...prev,
+                      to: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+            </div>
+
+            <div className="modal-actions">
+              <button type="button" onClick={saveExperience}>
+                {labels[locale].save}
+              </button>
+              <button type="button" onClick={openNewExperienceModal}>
+                {labels[locale].addExperience}
+              </button>
+              <button type="button" onClick={() => setIsExperienceModalOpen(false)}>
+                {labels[locale].cancel}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }
