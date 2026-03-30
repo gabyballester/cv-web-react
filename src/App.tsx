@@ -15,7 +15,6 @@ const labels = {
     importJson: 'Importar JSON',
     exportJson: 'Exportar JSON',
     printPdf: 'Descargar PDF A4',
-    darkTheme: 'Tema oscuro',
     profile: 'Perfil',
     manageExperiences: 'Gestionar experiencias',
     edit: 'Editar',
@@ -33,7 +32,6 @@ const labels = {
     importJson: 'Import JSON',
     exportJson: 'Export JSON',
     printPdf: 'Download A4 PDF',
-    darkTheme: 'Dark theme',
     profile: 'Profile',
     manageExperiences: 'Manage experiences',
     edit: 'Edit',
@@ -80,9 +78,10 @@ function ExperienceBlock({
 
 function App() {
   const [locale, setLocale] = useState<Locale>('es')
-  const [darkMode, setDarkMode] = useState(false)
   const [cvData, setCvData] = useState<CvData>(initialCvData)
   const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false)
+  const [photoLoadError, setPhotoLoadError] = useState(false)
+  const [qrLoadError, setQrLoadError] = useState(false)
   const [editingExperienceIndex, setEditingExperienceIndex] = useState<number | null>(null)
   const [draftExperience, setDraftExperience] = useState({
     role: { es: '', en: '' },
@@ -200,7 +199,7 @@ function App() {
   }
 
   return (
-    <div className={`app ${darkMode ? 'theme-dark' : ''}`}>
+    <div className="app">
       <header className="toolbar no-print">
         <div className="toolbar-left">
           <button
@@ -217,14 +216,6 @@ function App() {
           >
             EN
           </button>
-          <label className="theme-toggle">
-            <input
-              type="checkbox"
-              checked={darkMode}
-              onChange={(e) => setDarkMode(e.target.checked)}
-            />
-            {labels[locale].darkTheme}
-          </label>
         </div>
         <div className="toolbar-right">
           <button type="button" onClick={handlePrint}>
@@ -245,7 +236,18 @@ function App() {
           <article className="a4-page">
             <div className="cv-grid">
               <aside className="cv-sidebar">
-                <div className="photo-placeholder">GB</div>
+                <div className="photo-wrap">
+                  {!photoLoadError ? (
+                    <img
+                      src="/profile-photo.jpg"
+                      alt="Gabriel Ballester"
+                      className="profile-photo"
+                      onError={() => setPhotoLoadError(true)}
+                    />
+                  ) : (
+                    <div className="photo-placeholder">GB</div>
+                  )}
+                </div>
                 <h3>{labels[locale].profile}</h3>
                 {cvData.profile.quotes.map((q) => (
                   <p key={q.es} className="quote">
@@ -264,9 +266,23 @@ function App() {
                     <li key={item.es}>{localize(locale, item)}</li>
                   ))}
                 </ul>
+                <h3>LinkedIn QR</h3>
+                <div className="qr-wrap">
+                  {!qrLoadError ? (
+                    <img
+                      src="/linkedin-qr.png"
+                      alt="LinkedIn QR"
+                      className="qr-image"
+                      onError={() => setQrLoadError(true)}
+                    />
+                  ) : (
+                    <div className="qr-placeholder">QR</div>
+                  )}
+                </div>
               </aside>
               <section className="cv-content">
                 <header className="hero">
+                  <div className="hero-banner" />
                   <h1>{cvData.profile.name}</h1>
                   <p className="role-tag">{cvData.profile.roleTag}</p>
                 </header>

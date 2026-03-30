@@ -52,6 +52,28 @@ export const initialCvData: CvData = {
       },
       period: { from: '01/2018', to: '07/2018' },
     },
+    {
+      title: {
+        es: 'Administracion de Sistemas Informaticos (ASIR)',
+        en: 'Computer Systems Management (ASIR)',
+      },
+      center: {
+        es: 'IES Serpis, Valencia, España',
+        en: 'IES Serpis, Valencia, Spain',
+      },
+      period: { from: '09/2002', to: '04/2004' },
+    },
+    {
+      title: {
+        es: 'Tecnico Superior Administrativo y Comercial (FP2)',
+        en: 'Administrative and Commercial Technician (FP2)',
+      },
+      center: {
+        es: 'IES Cabanyal, Valencia, España',
+        en: 'IES Cabanyal, Valencia, Spain',
+      },
+      period: { from: '09/1994', to: '06/1999' },
+    },
   ],
   experiences: [
     {
@@ -61,7 +83,7 @@ export const initialCvData: CvData = {
         en: 'BABEL GROUP - Client: Unicaja',
       },
       project: { es: 'Proyecto: Banca Digital', en: 'Project: Digital Banking' },
-      period: { from: '03/2023', to: 'Actualidad / Present' },
+      period: { from: '03/2023', to: 'Present' },
       location: { es: 'España', en: 'Spain' },
       bullets: [
         {
@@ -173,6 +195,96 @@ export const initialCvData: CvData = {
       ],
       technologies: ['Vue', 'TypeScript', 'Vuex', 'Docker', 'Bootstrap'],
     },
+    {
+      role: {
+        es: 'Recepcionista bilingue Ingles/Español',
+        en: 'Bilingual Receptionist (English/Spanish)',
+      },
+      company: {
+        es: 'Instituto Cervantes Manchester',
+        en: 'Instituto Cervantes Manchester',
+      },
+      project: {
+        es: 'Community management y tareas de recepcion',
+        en: 'Community management and front desk operations',
+      },
+      period: { from: '03/2017', to: '10/2017' },
+      location: { es: 'Manchester, UK', en: 'Manchester, UK' },
+      bullets: [
+        {
+          es: 'Atencion al publico y coordinacion diaria de tareas administrativas.',
+          en: 'Handled customer-facing operations and daily administrative coordination.',
+        },
+      ],
+      technologies: ['Customer Service', 'Operations'],
+    },
+    {
+      role: { es: 'Lider de equipo logístico', en: 'Logistics Team Leader' },
+      company: {
+        es: 'XPO Logistics',
+        en: 'XPO Logistics',
+      },
+      project: {
+        es: 'Supervision de linea de produccion y KPIs',
+        en: 'Production line supervision and KPI tracking',
+      },
+      period: { from: '10/2014', to: '03/2017' },
+      location: { es: 'Manchester, UK', en: 'Manchester, UK' },
+      bullets: [
+        {
+          es: 'Control de calidad, rendimiento y coordinacion operativa.',
+          en: 'Oversaw quality control, throughput, and operational coordination.',
+        },
+      ],
+      technologies: ['KPIs', 'Team Leadership', 'Operations'],
+    },
+    {
+      role: { es: 'Tecnico informatico Tier 1 y Tier 2', en: 'IT Technician (Tier 1 and Tier 2)' },
+      company: {
+        es: 'Vodafone España',
+        en: 'Vodafone Spain',
+      },
+      project: {
+        es: 'Soporte tecnico y atencion al cliente',
+        en: 'Technical support and customer service',
+      },
+      period: { from: '06/2012', to: '08/2014' },
+      location: { es: 'España', en: 'Spain' },
+      bullets: [
+        {
+          es: 'Resolucion de incidencias y soporte tecnico en distintos niveles.',
+          en: 'Resolved incidents and delivered multi-level technical support.',
+        },
+      ],
+      technologies: ['Support', 'Incident Management'],
+    },
+    {
+      role: {
+        es: 'Tecnico informatico (Franquicia propia)',
+        en: 'IT Technician (Franchise Owner)',
+      },
+      company: {
+        es: 'APP Informatica',
+        en: 'APP Informática',
+      },
+      project: {
+        es: 'Servicios de reparacion, backup y ventas',
+        en: 'Repair services, backups, and sales',
+      },
+      period: { from: '05/2004', to: '10/2011' },
+      location: { es: 'España', en: 'Spain' },
+      bullets: [
+        {
+          es: 'Montaje y reparacion de equipos, copias de seguridad y restauraciones.',
+          en: 'Performed PC assembly and repair, backups, and restorations.',
+        },
+        {
+          es: 'Elaboracion de presupuestos a medida y ventas.',
+          en: 'Prepared tailored quotes and managed sales.',
+        },
+      ],
+      technologies: ['Hardware', 'Backups', 'Sales'],
+    },
   ],
   courses: [
     {
@@ -188,6 +300,41 @@ export const initialCvData: CvData = {
           length: '49h',
           author: 'Fernando Herrera',
         },
+        {
+          title: 'React PRO: Lleva tus bases al siguiente nivel',
+          length: '27h',
+          author: 'Fernando Herrera',
+        },
+        {
+          title: 'React - La Guia Completa: Hooks Context Redux MERN +15 Apps',
+          length: '67h',
+          author: 'Juan Pablo De La Torre Valdez',
+        },
+        {
+          title: 'Web Personal MERN Full Stack: MongoDB, Express, React y Node',
+          length: '34h',
+          author: 'Agustin Navarro Galdon',
+        },
+        {
+          title: 'React and NestJS: A Practical Guide with Docker',
+          length: '7h',
+          author: 'Antonio Papa',
+        },
+      ],
+    },
+    {
+      name: { es: 'React Native', en: 'React Native' },
+      items: [
+        {
+          title: 'React Native - The Practical Guide [2022]',
+          length: '29h',
+          author: 'Maximillian Schwarzmüller',
+        },
+        {
+          title: 'React Native: Aplicaciones nativas para iOS y Android',
+          length: '44h',
+          author: 'Fernando Herrera',
+        },
       ],
     },
     {
@@ -197,6 +344,16 @@ export const initialCvData: CvData = {
           title: 'NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)',
           length: '41h',
           author: 'Maximillian Schwarzmüller',
+        },
+        {
+          title: 'CSS - The Complete Guide (Flexbox, Grid & SASS)',
+          length: '22h',
+          author: 'Maximillian Schwarzmüller',
+        },
+        {
+          title: 'Master NestJS - The JavaScript Node.js Framework',
+          length: '8h',
+          author: 'Piotr Jura',
         },
       ],
     },
