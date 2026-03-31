@@ -2,60 +2,85 @@
   "profile": {
     "name": "Gabriel Ballester Morant",
     "roleTag": "Frontend React Software Engineer",
+    "frontendCareerSince": "02/2019",
     "city": "Valencia, Spain",
     "phone": "692653170",
     "email": "gaby.ballester@gmail.com",
     "linkedin": "linkedin.com/in/gabyballester",
     "quotes": [
       {
-        "es": "Más de 6 años como desarrollador frontend (React/TypeScript) en producto digital y banca: interfaces mantenibles, design systems, testing (Jest, RTL) y entrega en Scrum con equipos multidisciplinares.",
-        "en": "6+ years as a frontend engineer (React / TypeScript) across digital banking and enterprise products: maintainable UIs, design systems, testing (Jest, RTL), and Scrum delivery with cross-functional squads."
+        "es": "Enfrento los retos como oportunidades de aprender y crecer profesionalmente.",
+        "en": "I treat challenges as opportunities to learn and grow professionally."
       },
       {
-        "es": "Orientación a negocio y stakeholders: priorización por impacto, alineación con UX/backend y hábitos de ingeniería (Clean Code, revisiones, documentación) para reducir deuda técnica.",
-        "en": "Business- and stakeholder-oriented: impact-led prioritisation, tight collaboration with UX/backend, and engineering habits (Clean Code, reviews, documentation) to keep technical debt under control."
+        "es": "Perfil polivalente, trabajo metódico y orientación a resultados.",
+        "en": "Versatile profile, methodical work, and a results-driven mindset."
+      },
+      {
+        "es": "Determinación constante para cumplir objetivos individuales y de equipo.",
+        "en": "Consistent determination to meet both individual and team goals."
       }
     ],
     "skillProfile": [
       {
-        "label": {
-          "es": "React, TypeScript y stack web moderno",
-          "en": "React, TypeScript & modern web stack"
-        },
-        "yearsProfessional": 6,
+        "label": { "es": "JavaScript", "en": "JavaScript" },
+        "tenureKey": "javascriptProduct",
+        "icon": "javascript"
+      },
+      {
+        "label": { "es": "React", "en": "React" },
+        "tenureKey": "react",
         "icon": "react"
       },
       {
+        "label": { "es": "TypeScript", "en": "TypeScript" },
+        "tenureKey": "typescript",
+        "icon": "typescript"
+      },
+      {
         "label": {
-          "es": "Testing y calidad (Jest, RTL, revisiones)",
-          "en": "Testing & quality (Jest, RTL, code review)"
+          "es": "Redux · Context API",
+          "en": "Redux · Context API"
         },
-        "yearsProfessional": 5,
+        "tenureKey": "stateManagement",
+        "icon": "state"
+      },
+      {
+        "label": {
+          "es": "Testing (Jest · RTL)",
+          "en": "Testing (Jest · RTL)"
+        },
+        "tenureKey": "testingFrontend",
         "icon": "testing"
       },
       {
         "label": {
-          "es": "Design systems, Storybook, accesibilidad",
-          "en": "Design systems, Storybook, accessibility"
+          "es": "Git · Bitbucket · Jenkins",
+          "en": "Git · Bitbucket · Jenkins"
         },
-        "yearsProfessional": 5,
+        "tenureKey": "gitWorkflow",
+        "icon": "git"
+      },
+      {
+        "label": {
+          "es": "APIs REST (NestJS)",
+          "en": "REST APIs (NestJS)"
+        },
+        "tenureKey": "restApis",
+        "icon": "api"
+      },
+      {
+        "label": {
+          "es": "Storybook · Styled Components",
+          "en": "Storybook · Styled Components"
+        },
+        "tenureKey": "designSystems",
         "icon": "uiSystems"
       },
       {
-        "label": {
-          "es": "Scrum y trabajo con equipos multidisciplinares",
-          "en": "Scrum & cross-functional collaboration"
-        },
-        "yearsProfessional": 6,
+        "label": { "es": "Agile · Scrum", "en": "Agile · Scrum" },
+        "tenureKey": "scrumDelivery",
         "icon": "agile"
-      },
-      {
-        "label": {
-          "es": "Arquitectura mantenible (SOLID, refactor)",
-          "en": "Maintainable architecture (SOLID, refactoring)"
-        },
-        "yearsProfessional": 5,
-        "icon": "architecture"
       }
     ],
     "languages": [
@@ -143,8 +168,8 @@
         "en": "Capgemini"
       },
       "location": {
-        "es": "Valencia · Remoto",
-        "en": "Valencia, Spain · Remote"
+        "es": "Valencia (Remoto)",
+        "en": "Valencia (Remote)"
       },
       "positions": [
         {
@@ -251,8 +276,8 @@
         "en": "Mid React Developer"
       },
       "company": {
-        "es": "BABEL GROUP - Cliente: Unicaja",
-        "en": "BABEL GROUP - Client: Unicaja"
+        "es": "Babel Group",
+        "en": "Babel Group"
       },
       "project": {
         "es": "Proyecto: Banca Digital",
@@ -263,8 +288,8 @@
         "to": "12/2024"
       },
       "location": {
-        "es": "España",
-        "en": "Spain"
+        "es": "Málaga (Remoto)",
+        "en": "Málaga (Remote)"
       },
       "bullets": [
         {
@@ -300,8 +325,8 @@
         "en": "Junior React Developer"
       },
       "company": {
-        "es": "CLEVERPY MACHINE LEARNING - Cliente: Idrica",
-        "en": "CLEVERPY MACHINE LEARNING - Client: Idrica"
+        "es": "Cleverpy Machine Learning - Cliente: Idrica",
+        "en": "Cleverpy Machine Learning - Client: Idrica"
       },
       "project": {
         "es": "MVP de control de calidad de aguas residuales industriales",
@@ -312,8 +337,8 @@
         "to": "03/2023"
       },
       "location": {
-        "es": "España",
-        "en": "Spain"
+        "es": "España (Remoto)",
+        "en": "Spain (Remote)"
       },
       "bullets": [
         {
@@ -348,8 +373,8 @@
         "en": "Junior Backend Developer"
       },
       "company": {
-        "es": "TMC SPAIN - Cliente: Bricodepot",
-        "en": "TMC SPAIN - Client: Bricodepot"
+        "es": "TMC Spain - Cliente: Bricodepot",
+        "en": "TMC Spain - Client: Bricodepot"
       },
       "project": {
         "es": "MVP de cálculo de costes de transporte",
@@ -360,8 +385,8 @@
         "to": "09/2021"
       },
       "location": {
-        "es": "España",
-        "en": "Spain"
+        "es": "Madrid (Remoto)",
+        "en": "Madrid (Remote)"
       },
       "bullets": [
         {
@@ -386,8 +411,8 @@
         "en": "Junior React Developer"
       },
       "company": {
-        "es": "VERES",
-        "en": "VERES"
+        "es": "Veres",
+        "en": "Veres"
       },
       "project": {
         "es": "PoC y MVP para instituciones educativas",
@@ -398,8 +423,8 @@
         "to": "10/2020"
       },
       "location": {
-        "es": "España",
-        "en": "Spain"
+        "es": "Valencia (Remoto)",
+        "en": "Valencia (Remote)"
       },
       "bullets": [
         {
@@ -417,11 +442,11 @@
       "kind": "single",
       "role": {
         "es": "Junior Vue Developer",
-        "en": "Junior Vue Developer [TypeScript]"
+        "en": "Junior Vue Developer"
       },
       "company": {
-        "es": "TECNICOO (Tecnifica Colectivos)\nGestionado por GeeksHubs (Grupo Alfatec)",
-        "en": "TECNICOO (Tecnifica Colectivos)\nManaged by GeeksHubs (Alfatec Group)"
+        "es": "TECNIFICA COLECTIVOS\nGestionado por GeeksHubs (Grupo Alfatec)",
+        "en": "TECNIFICA COLECTIVOS\nManaged by GeeksHubs (Alfatec Group)"
       },
       "project": {
         "es": "Proyecto MVP documentación y contable para autónomos",
@@ -432,8 +457,8 @@
         "to": "10/2019"
       },
       "location": {
-        "es": "España",
-        "en": "Spain"
+        "es": "Valencia",
+        "en": "Valencia"
       },
       "bullets": [
         {
@@ -478,20 +503,20 @@
         "en": "Receptionist bilingual English/Spanish"
       },
       "company": {
-        "es": "INSTITUTO CERVANTES MANCHESTER — Manchester, United Kingdom",
-        "en": "INSTITUTO CERVANTES MANCHESTER — Manchester, United Kingdom"
+        "es": "Instituto Cervantes Manchester",
+        "en": "Instituto Cervantes Manchester"
       },
       "project": {
-        "es": "Community management y tareas del departamento de recepción.",
-        "en": "Community management, reception department tasks."
+        "es": "Departamento de recepción",
+        "en": "Reception department"
       },
       "period": {
         "from": "03/2017",
         "to": "10/2017"
       },
       "location": {
-        "es": "Manchester, United Kingdom",
-        "en": "Manchester, United Kingdom"
+        "es": "Manchester, Reino Unido",
+        "en": "Manchester, UK"
       },
       "bullets": [],
       "technologies": []
@@ -503,8 +528,8 @@
         "en": "Logistic team leader"
       },
       "company": {
-        "es": "XPO LOGISTICS — Manchester, United Kingdom",
-        "en": "XPO LOGISTICS — Manchester, United Kingdom"
+        "es": "XPO Logistics",
+        "en": "XPO Logistics"
       },
       "project": {
         "es": "Seguimiento de línea de producción, control de calidad y KPIs.",
@@ -515,8 +540,8 @@
         "to": "03/2017"
       },
       "location": {
-        "es": "Manchester, United Kingdom",
-        "en": "Manchester, United Kingdom"
+        "es": "Manchester, Reino Unido",
+        "en": "Manchester, UK"
       },
       "bullets": [],
       "technologies": []
@@ -528,8 +553,8 @@
         "en": "IT Technician – 1st & 2nd line"
       },
       "company": {
-        "es": "VODAFONE ESPAÑA",
-        "en": "VODAFONE ESPAÑA"
+        "es": "Vodafone España",
+        "en": "Vodafone España"
       },
       "project": {
         "es": "Atención al cliente.",
@@ -540,8 +565,8 @@
         "to": "08/2014"
       },
       "location": {
-        "es": "España",
-        "en": "Spain"
+        "es": "Valencia",
+        "en": "Valencia"
       },
       "bullets": [],
       "technologies": []
@@ -553,8 +578,8 @@
         "en": "IT Technician (Freelance)"
       },
       "company": {
-        "es": "APP INFORMÁTICA",
-        "en": "APP INFORMÁTICA"
+        "es": "APP Informática",
+        "en": "APP Informática"
       },
       "project": {
         "es": "Funciones / tareas:",
@@ -565,8 +590,8 @@
         "to": "10/2011"
       },
       "location": {
-        "es": "España",
-        "en": "Spain"
+        "es": "Sagunto (Valencia)",
+        "en": "Sagunto (Valencia)"
       },
       "bullets": [
         {

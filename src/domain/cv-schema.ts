@@ -59,18 +59,43 @@ const courseCategorySchema = z.object({
 })
 
 export const skillProfileIconSchema = z.enum([
+  'javascript',
   'react',
   'typescript',
   'testing',
   'uiSystems',
   'agile',
-  'architecture',
+  'git',
+  'state',
+  'api',
+])
+
+export const skillTenureKeySchema = z.enum([
+  /** From `frontendCareerSince` through today (continuous product-facing JS career). */
+  'javascriptProduct',
+  /** Union of roles where technologies list TypeScript. */
+  'typescript',
+  /** Union of roles where technologies list React. */
+  'react',
+  /** Jest / RTL / Enzyme on frontend (React or Vue) stacks. */
+  'testingFrontend',
+  /** Storybook, styled-components, design systems, ODS, etc. */
+  'designSystems',
+  /** Technologies list Scrum or Agile. */
+  'scrumDelivery',
+  /** Git, GitHub, Bitbucket, Jenkins (version control & CI). */
+  'gitWorkflow',
+  /** Redux, Context API, Vuex. */
+  'stateManagement',
+  /** NestJS, Swagger, Postman (según tecnologías declaradas en experiencias). */
+  'restApis',
 ])
 
 const skillProfileEntrySchema = z.object({
   label: localizedTextSchema,
-  /** Approx. years applied in recent frontend/product roles (feeds slice size). */
-  yearsProfessional: z.number().min(0).max(35),
+  /** Optional longer copy (not shown in compact CV layout). */
+  tagline: localizedTextSchema.optional(),
+  tenureKey: skillTenureKeySchema,
   icon: skillProfileIconSchema,
 })
 
@@ -78,6 +103,8 @@ export const cvSchema = z.object({
   profile: z.object({
     name: z.string(),
     roleTag: z.string(),
+    /** First professional frontend role (MM/yyyy) — used for JS tenure and quote templates. */
+    frontendCareerSince: z.string(),
     city: z.string(),
     phone: z.string(),
     email: z.string().email(),
@@ -93,6 +120,7 @@ export const cvSchema = z.object({
 
 export type CvData = z.infer<typeof cvSchema>
 export type SkillProfileEntry = CvData['profile']['skillProfile'][number]
+export type SkillTenureKey = z.infer<typeof skillTenureKeySchema>
 export type ExperienceGrouped = z.infer<typeof experienceGroupedSchema>
 export type ExperienceSingle = z.infer<typeof experienceSingleSchema>
 export type ExperiencePosition = z.infer<typeof experiencePositionSchema>

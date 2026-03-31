@@ -9,7 +9,7 @@ export const labels = {
     professionalSummary: 'Resumen profesional',
     coreExpertise: 'Competencias clave',
     coreExpertiseFootnote:
-      'Años orientativos en roles de producto (frontend); el gráfico muestra peso relativo. No incluye trayectoria no relacionada.',
+      'Antigüedad calculada con la fecha de inicio indicada y las experiencias del CV: TypeScript/React/testing solo cuentan donde figuran en tecnologías; JavaScript abarca desde el primer rol frontend hasta hoy.',
     languages: 'Idiomas',
     technologies: 'Tecnologías y herramientas',
     addExperience: 'Añadir experiencia',
@@ -35,7 +35,7 @@ export const labels = {
     professionalSummary: 'Professional summary',
     coreExpertise: 'Core expertise',
     coreExpertiseFootnote:
-      'Approximate years in product-facing frontend roles; the chart shows relative weight. Non-tech history excluded.',
+      'Tenure is computed from the stated frontend start date and dated roles: TypeScript, React, and testing only count where those tools appear in the CV; the JavaScript line runs from the first frontend role through today.',
     languages: 'Languages',
     technologies: 'Technologies and tools',
     addExperience: 'Add experience',
