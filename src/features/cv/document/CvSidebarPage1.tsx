@@ -38,7 +38,7 @@ export function CvSidebarPage1({
   onQrError,
 }: Props) {
   return (
-    <aside className="cv-sidebar cv-sidebar--p1">
+    <aside className="cv-sidebar cv-sidebar--p1" aria-label={`${labels.sidebarContent} 1`}>
       <ProfilePhotoCard
         photoSrc={photoSrc}
         photoAlt={cvData.profile.name}
@@ -61,18 +61,28 @@ export function CvSidebarPage1({
             <span>Tlf: {cvData.profile.phone}</span>
           </ContactRow>
           <ContactRow icon="mobile">
-            <a href={`mailto:${cvData.profile.email}`} className="contact-link">
+            <a
+              href={`mailto:${cvData.profile.email}`}
+              className="contact-link"
+              aria-label={`${labels.sendEmailTo} ${cvData.profile.email}`}
+            >
               {cvData.profile.email}
             </a>
           </ContactRow>
           <ContactRow icon="linkedin">
-            <a href={`https://${cvData.profile.linkedin}`} className="contact-link">
+            <a
+              href={`https://${cvData.profile.linkedin}`}
+              className="contact-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${labels.openLinkedInProfile}: ${cvData.profile.linkedin}`}
+            >
               {cvData.profile.linkedin}
             </a>
           </ContactRow>
         </ul>
       </CvTitledSection>
-      <CvTitledSection title="LinkedIn QR">
+      <CvTitledSection title={labels.linkedInQr}>
         <div className="qr-wrap qr-wrap--tight">
           {!qrLoadError ? (
             <img src={linkedInQrPath} alt="LinkedIn QR" className="qr-image" onError={onQrError} />

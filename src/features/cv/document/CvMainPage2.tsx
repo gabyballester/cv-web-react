@@ -14,7 +14,7 @@ export function CvMainPage2({
   experiences,
 }: Props) {
   return (
-    <section className="cv-content cv-content--p2">
+    <section className="cv-content cv-content--p2" aria-label={`${labels.mainContent} 2`}>
       <section className="experience-list-p2">
         {experiences.map((exp) => {
           const blockKey =

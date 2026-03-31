@@ -17,7 +17,7 @@ export function CvSidebarPage2({
   courseCategories,
 }: Props) {
   return (
-    <aside className="cv-sidebar cv-sidebar--p2">
+    <aside className="cv-sidebar cv-sidebar--p2" aria-label={`${labels.sidebarContent} 2`}>
       <CvTitledSection title={labels.courses} className="courses-sidebar-p2">
         {courseCategories.map((category) => (
           <div key={category.name.es} className="course-category">

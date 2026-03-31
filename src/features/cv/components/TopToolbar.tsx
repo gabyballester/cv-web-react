@@ -5,10 +5,17 @@ type Props = {
   locale: Locale
   onLocaleChange: (locale: Locale) => void
   onDownloadPdf: () => void | Promise<void>
+  onPrintVectorPdf: () => void
   pdfExporting?: boolean
 }
 
-export function TopToolbar({ locale, onLocaleChange, onDownloadPdf, pdfExporting }: Props) {
+export function TopToolbar({
+  locale,
+  onLocaleChange,
+  onDownloadPdf,
+  onPrintVectorPdf,
+  pdfExporting,
+}: Props) {
   const labels = t(locale)
   return (
     <header className="toolbar no-print">
@@ -17,6 +24,8 @@ export function TopToolbar({ locale, onLocaleChange, onDownloadPdf, pdfExporting
           type="button"
           onClick={() => onLocaleChange('es')}
           className={locale === 'es' ? 'active' : ''}
+          aria-pressed={locale === 'es'}
+          aria-label={labels.changeLanguageToSpanish}
         >
           ES
         </button>
@@ -24,12 +33,22 @@ export function TopToolbar({ locale, onLocaleChange, onDownloadPdf, pdfExporting
           type="button"
           onClick={() => onLocaleChange('en')}
           className={locale === 'en' ? 'active' : ''}
+          aria-pressed={locale === 'en'}
+          aria-label={labels.changeLanguageToEnglish}
         >
           EN
         </button>
       </div>
       <div className="toolbar-right">
-        <button type="button" onClick={() => void onDownloadPdf()} disabled={pdfExporting}>
+        <button type="button" onClick={onPrintVectorPdf} disabled={pdfExporting}>
+          {labels.printPdfVector}
+        </button>
+        <button
+          type="button"
+          onClick={() => void onDownloadPdf()}
+          disabled={pdfExporting}
+          aria-busy={pdfExporting}
+        >
           {pdfExporting ? '…' : labels.printPdf}
         </button>
       </div>

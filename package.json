@@ -11,6 +11,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "preview": "pnpm exec vite preview",
+    "a11y:contrast": "node scripts/a11y/check-color-contrast.mjs",
     "test:visual": "pnpm exec playwright test --config=playwright.visual.config.ts",
     "test:visual:update": "pnpm exec playwright test --config=playwright.visual.config.ts --update-snapshots"
   },

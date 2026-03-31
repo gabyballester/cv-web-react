@@ -9,7 +9,7 @@ export const cvEducation = [
   },
   {
     title: l("Certificado de Profesionalidad (DAW)", "Professional Certificate (DAW)"),
-    center: l("AULA CAMPUS, Burjassot (Valencia), España", "AULA CAMPUS, Burjassot (Valencia), Spain"),
+    center: l("Aula Campus, Burjassot (Valencia), España", "Aula Campus, Burjassot (Valencia), Spain"),
     period: period("01/2018", "07/2018")
   },
   {

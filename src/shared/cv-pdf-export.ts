@@ -1,5 +1,19 @@
 import type { jsPDF as JsPdfType } from 'jspdf'
 
+const A4_WIDTH_INCH = 8.27
+const PDF_TARGET_DPI = 220
+const MIN_RENDER_SCALE = 2
+const MAX_RENDER_SCALE = 3
+const JPEG_QUALITY = 0.94
+
+function getPdfRenderScale(elementWidthPx: number) {
+  if (elementWidthPx <= 0) return MIN_RENDER_SCALE
+  const targetWidthPx = A4_WIDTH_INCH * PDF_TARGET_DPI
+  const dpiScale = targetWidthPx / elementWidthPx
+  const dprScale = typeof window !== 'undefined' ? (window.devicePixelRatio ?? 1) : 1
+  return Math.min(MAX_RENDER_SCALE, Math.max(MIN_RENDER_SCALE, dpiScale, dprScale))
+}
+
 function addImageContainA4(
   pdf: JsPdfType,
   canvas: HTMLCanvasElement,
@@ -42,8 +56,9 @@ export async function downloadCvPdf(paperStack: HTMLElement, filename: string) {
 
   for (let i = 0; i < pages.length; i++) {
     const el = pages[i]
+    const scale = getPdfRenderScale(el.offsetWidth)
     const canvas = await html2canvas(el, {
-      scale: 2,
+      scale,
       useCORS: true,
       allowTaint: true,
       backgroundColor: '#ffffff',
@@ -52,7 +67,8 @@ export async function downloadCvPdf(paperStack: HTMLElement, filename: string) {
       height: el.offsetHeight,
     })
 
-    const imgData = canvas.toDataURL('image/jpeg', 0.92)
+    // JPEG keeps file size practical while retaining good readability for A4 exports.
+    const imgData = canvas.toDataURL('image/jpeg', JPEG_QUALITY)
 
     if (i > 0) pdf.addPage()
     addImageContainA4(pdf, canvas, imgData, 'JPEG')

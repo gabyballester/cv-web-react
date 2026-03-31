@@ -18,7 +18,7 @@ export function CvMainPage1({
   experiences,
 }: Props) {
   return (
-    <section className="cv-content">
+    <section className="cv-content" aria-label={`${labels.mainContent} 1`}>
       <header className="hero">
         <div className="hero-banner" />
         <h1>{cvData.profile.name}</h1>

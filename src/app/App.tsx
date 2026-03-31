@@ -37,12 +37,18 @@ function App() {
     }
   }, [locale])
 
+  const handlePrintVectorPdf = useCallback(() => {
+    if (pdfBusyRef.current) return
+    window.print()
+  }, [])
+
   return (
     <div className="app">
       <TopToolbar
         locale={locale}
         onLocaleChange={setLocale}
         onDownloadPdf={handleDownloadPdf}
+        onPrintVectorPdf={handlePrintVectorPdf}
         pdfExporting={pdfExporting}
       />
 

@@ -12,8 +12,8 @@
   --accent-strong: #004f80;
   --accent-topbar-border: #0b5f91;
   --accent-topbar-start: #00639a;
-  --accent-topbar-mid: #1188bf;
-  --accent-topbar-end: #19a3d6;
+  --accent-topbar-mid: #0b6f9d;
+  --accent-topbar-end: #085b82;
   --accent-hero-end: #17abda;
   --accent-soft-start: #bfe4f5;
   --accent-soft-end: #7cc0e0;
@@ -151,6 +151,11 @@ button,
 button:hover,
 .import-label:hover {
   border-color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
 }
 
 .active {
