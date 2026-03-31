@@ -1,7 +1,728 @@
-import cvContentJson from './cv-content.json'
+import type { CvData } from '../domain/cv-schema'
 
-/**
- * Source of CV content.
- * Kept in TS entrypoint while preserving current JSON data file.
- */
-export const cvContent = cvContentJson
+export const cvContent = {
+  "profile": {
+    "name": "Gabriel Ballester Morant",
+    "roleTag": "Frontend React Software Engineer",
+    "frontendCareerSince": "02/2019",
+    "city": "Valencia, Spain",
+    "phone": "692653170",
+    "email": "gaby.ballester@gmail.com",
+    "linkedin": "linkedin.com/in/gabyballester",
+    "quotes": [
+      {
+        "es": "Enfrento los retos como oportunidades de aprender y crecer profesionalmente.",
+        "en": "I treat challenges as opportunities to learn and grow professionally."
+      },
+      {
+        "es": "Perfil polivalente, trabajo metódico y orientación a resultados.",
+        "en": "Versatile profile, methodical work, and a results-driven mindset."
+      },
+      {
+        "es": "Determinación constante para cumplir objetivos individuales y de equipo.",
+        "en": "Consistent determination to meet both individual and team goals."
+      }
+    ],
+    "skillProfile": [
+      {
+        "label": {
+          "es": "JavaScript",
+          "en": "JavaScript"
+        },
+        "tenureKey": "javascriptProduct",
+        "icon": "javascript"
+      },
+      {
+        "label": {
+          "es": "React",
+          "en": "React"
+        },
+        "tenureKey": "react",
+        "icon": "react"
+      },
+      {
+        "label": {
+          "es": "TypeScript",
+          "en": "TypeScript"
+        },
+        "tenureKey": "typescript",
+        "icon": "typescript"
+      },
+      {
+        "label": {
+          "es": "Redux · Context API",
+          "en": "Redux · Context API"
+        },
+        "tenureKey": "stateManagement",
+        "icon": "state"
+      },
+      {
+        "label": {
+          "es": "Testing (Jest · RTL)",
+          "en": "Testing (Jest · RTL)"
+        },
+        "tenureKey": "testingFrontend",
+        "icon": "testing"
+      },
+      {
+        "label": {
+          "es": "Git · Bitbucket · Jenkins",
+          "en": "Git · Bitbucket · Jenkins"
+        },
+        "tenureKey": "gitWorkflow",
+        "icon": "git"
+      },
+      {
+        "label": {
+          "es": "APIs REST (NestJS)",
+          "en": "REST APIs (NestJS)"
+        },
+        "tenureKey": "restApis",
+        "icon": "api"
+      },
+      {
+        "label": {
+          "es": "Storybook · Styled Components",
+          "en": "Storybook · Styled Components"
+        },
+        "tenureKey": "designSystems",
+        "icon": "uiSystems"
+      },
+      {
+        "label": {
+          "es": "Agile · Scrum",
+          "en": "Agile · Scrum"
+        },
+        "tenureKey": "scrumDelivery",
+        "icon": "agile"
+      }
+    ],
+    "languages": [
+      {
+        "es": "Inglés C1 (Trinity)",
+        "en": "English C1 (Trinity)"
+      },
+      {
+        "es": "Valencià C1 (JQCV)",
+        "en": "Valencian C1 (JQCV)"
+      },
+      {
+        "es": "Francés B1 (MCER)",
+        "en": "French B1 (MCER)"
+      },
+      {
+        "es": "Alemán A1 (EOI)",
+        "en": "German A1 (EOI)"
+      }
+    ]
+  },
+  "education": [
+    {
+      "title": {
+        "es": "Bootcamp Full Stack JavaScript Developer",
+        "en": "Bootcamp Full Stack JavaScript Developer"
+      },
+      "center": {
+        "es": "Geekshubs Academy (Grupo Alfatec), Valencia, España",
+        "en": "Geekshubs Academy (Grupo Alfatec), Valencia, Spain"
+      },
+      "period": {
+        "from": "10/2018",
+        "to": "01/2019"
+      }
+    },
+    {
+      "title": {
+        "es": "Certificado de Profesionalidad (DAW)",
+        "en": "Professional Certificate (DAW)"
+      },
+      "center": {
+        "es": "AULA CAMPUS, Burjassot (Valencia), España",
+        "en": "AULA CAMPUS, Burjassot (Valencia), Spain"
+      },
+      "period": {
+        "from": "01/2018",
+        "to": "07/2018"
+      }
+    },
+    {
+      "title": {
+        "es": "Administración de Sistemas Informáticos (ASIR)",
+        "en": "Computer Systems Management (ASIR)"
+      },
+      "center": {
+        "es": "IES Serpis, Valencia, España",
+        "en": "IES Serpis, Valencia, Spain"
+      },
+      "period": {
+        "from": "09/2002",
+        "to": "04/2004"
+      }
+    },
+    {
+      "title": {
+        "es": "Técnico Superior Administrativo y Comercial (FP2)",
+        "en": "Administrative and Commercial Technician (FP2)"
+      },
+      "center": {
+        "es": "IES Cabanyal, Valencia, España",
+        "en": "IES Cabanyal, Valencia, Spain"
+      },
+      "period": {
+        "from": "09/1994",
+        "to": "06/1999"
+      }
+    }
+  ],
+  "experiences": [
+    {
+      "kind": "grouped",
+      "company": {
+        "es": "Capgemini",
+        "en": "Capgemini"
+      },
+      "location": {
+        "es": "Valencia (Remoto)",
+        "en": "Valencia (Remote)"
+      },
+      "positions": [
+        {
+          "role": {
+            "es": "Frontend React Software Engineer",
+            "en": "Frontend React Software Engineer"
+          },
+          "project": {
+            "es": "Onboarding",
+            "en": "Onboarding"
+          },
+          "client": {
+            "es": "Openbank",
+            "en": "Openbank"
+          },
+          "period": {
+            "from": "04/2025",
+            "to": "Present"
+          },
+          "bullets": [
+            {
+              "es": "Inicio del proyecto sobre arquitectura Hexagonal Openbank para el proceso completo de onboarding de clientes.",
+              "en": "Project inception on Openbank Hexagonal Architecture for the end-to-end customer onboarding journey."
+            },
+            {
+              "es": "Implementación de componentes reutilizables con React, TypeScript, Styled Components y ODS Open (Storybook).",
+              "en": "Built reusable UI with React, TypeScript, Styled Components, and ODS Open (Storybook)."
+            },
+            {
+              "es": "Testing con Jest y React Testing Library para calidad y cobertura.",
+              "en": "Testing with Jest and React Testing Library for quality and coverage."
+            },
+            {
+              "es": "Participación en ceremonias ágiles y colaboración con equipo multidisciplinar (frontend, backend, QA, UX/UI, accesibilidad).",
+              "en": "Contributed to agile ceremonies and collaborated in a multidisciplinary squad (frontend, backend, QA, UX/UI, accessibility)."
+            }
+          ],
+          "technologies": [
+            "React",
+            "TypeScript",
+            "Styled Components",
+            "ODS Open",
+            "Storybook",
+            "Hexagonal Architecture",
+            "Agile",
+            "Scrum",
+            "Git",
+            "Jest",
+            "React Testing Library",
+            "Jira",
+            "ESLint",
+            "Prettier"
+          ]
+        },
+        {
+          "role": {
+            "es": "Frontend React Software Engineer",
+            "en": "Frontend React Software Engineer"
+          },
+          "project": {
+            "es": "Planes de pensiones",
+            "en": "Pension plans"
+          },
+          "client": {
+            "es": "VidaCaixa",
+            "en": "VidaCaixa"
+          },
+          "period": {
+            "from": "12/2024",
+            "to": "04/2025"
+          },
+          "bullets": [
+            {
+              "es": "Desarrollo y mantenimiento de aplicación para cálculo de planes de pensiones en entorno crítico.",
+              "en": "Developed and maintained a pension-plan calculation application in a critical business context."
+            },
+            {
+              "es": "Análisis de código heredado y documentación para continuar el desarrollo y reducir deuda técnica.",
+              "en": "Legacy code analysis and documentation to unblock delivery and reduce technical debt."
+            },
+            {
+              "es": "Nuevas funcionalidades según PO y UX, con foco en calidad y escalabilidad.",
+              "en": "Delivered new capabilities with Product Owner and UX, focusing on quality and scalability."
+            },
+            {
+              "es": "Testing con Jest y React Testing Library; trabajo en metodología ágil.",
+              "en": "Testing with Jest and React Testing Library; agile delivery practices."
+            }
+          ],
+          "technologies": [
+            "React",
+            "TypeScript",
+            "Redux",
+            "Storybook",
+            "Agile",
+            "Scrum",
+            "Git",
+            "Jest",
+            "React Testing Library",
+            "Jira",
+            "Bitbucket",
+            "ESLint",
+            "Prettier"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "single",
+      "role": {
+        "es": "Mid React Developer",
+        "en": "Mid React Developer"
+      },
+      "company": {
+        "es": "Babel Group",
+        "en": "Babel Group"
+      },
+      "project": {
+        "es": "Banca Digital",
+        "en": "Digital Banking"
+      },
+      "client": {
+        "es": "Babel Group",
+        "en": "Babel Group"
+      },
+      "period": {
+        "from": "03/2023",
+        "to": "12/2024"
+      },
+      "location": {
+        "es": "Málaga (Remoto)",
+        "en": "Málaga (Remote)"
+      },
+      "bullets": [
+        {
+          "es": "Refactorización con principios Clean Code y SOLID para migrar componentes de clase a componentes funcionales.",
+          "en": "Refactored the codebase with Clean Code and SOLID principles, migrating class components to functional components."
+        },
+        {
+          "es": "Desarrollo de nuevas funcionalidades y mejoras UI a partir de diseños de Figma y librería de componentes interna.",
+          "en": "Developed new features and UI improvements based on Figma designs and the internal component library."
+        },
+        {
+          "es": "Implementación y mantenimiento de testing automatizado con Jest, React Testing Library y Enzyme.",
+          "en": "Implemented and maintained automated tests with Jest, React Testing Library, and Enzyme."
+        }
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Styled Components",
+        "Redux",
+        "Context API",
+        "Jest",
+        "React Testing Library",
+        "Enzyme",
+        "Storybook",
+        "Jenkins"
+      ]
+    },
+    {
+      "kind": "single",
+      "role": {
+        "es": "Junior React Developer",
+        "en": "Junior React Developer"
+      },
+      "company": {
+        "es": "Cleverpy Machine Learning - Cliente: Idrica",
+        "en": "Cleverpy Machine Learning - Client: Idrica"
+      },
+      "project": {
+        "es": "MVP de control de calidad de aguas residuales industriales",
+        "en": "MVP for industrial wastewater quality control"
+      },
+      "period": {
+        "from": "10/2021",
+        "to": "03/2023"
+      },
+      "location": {
+        "es": "Valencia (Remoto)",
+        "en": "Valencia (Remote)"
+      },
+      "bullets": [
+        {
+          "es": "Puesta en marcha del proyecto con arquitectura cliente y construcción del frontend para cuadros de mando técnicos.",
+          "en": "Kicked off the project aligned with client architecture and built frontend dashboards for technical monitoring."
+        },
+        {
+          "es": "Integración de Azure, Chart.js, OpenLayers, AG Grid y DevExtreme en un ecosistema React + TypeScript.",
+          "en": "Integrated Azure, Chart.js, OpenLayers, AG Grid, and DevExtreme in a React + TypeScript ecosystem."
+        },
+        {
+          "es": "Gestión de estado global con Redux y Context API para autenticación y dominios funcionales.",
+          "en": "Managed global state with Redux and Context API for authentication and functional domains."
+        }
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Redux",
+        "Context API",
+        "Azure",
+        "Chart.js",
+        "OpenLayers",
+        "AG Grid",
+        "DevExtreme"
+      ]
+    },
+    {
+      "kind": "single",
+      "role": {
+        "es": "Junior Backend Developer",
+        "en": "Junior Backend Developer"
+      },
+      "company": {
+        "es": "TMC Spain - Cliente: Bricodepot",
+        "en": "TMC Spain - Client: Bricodepot"
+      },
+      "project": {
+        "es": "MVP de cálculo de costes de transporte",
+        "en": "MVP for transport cost calculation"
+      },
+      "period": {
+        "from": "01/2021",
+        "to": "09/2021"
+      },
+      "location": {
+        "es": "Madrid (Remoto)",
+        "en": "Madrid (Remote)"
+      },
+      "bullets": [
+        {
+          "es": "Creación de microservicio SaaS API REST para cálculo de costes logísticos y reglas de negocio.",
+          "en": "Built a SaaS REST API microservice for logistics cost calculation and business rules."
+        },
+        {
+          "es": "Integración con agencias de transporte mediante servicios REST, SOAP y XML.",
+          "en": "Integrated with shipping agencies through REST, SOAP, and XML services."
+        },
+        {
+          "es": "Definición y verificación de contratos API con Postman y Swagger, junto a pruebas automatizadas con Jest.",
+          "en": "Defined and validated API contracts with Postman and Swagger, supported by automated tests with Jest."
+        }
+      ],
+      "technologies": [
+        "NestJS",
+        "TypeScript",
+        "Postman",
+        "Swagger",
+        "Jest"
+      ]
+    },
+    {
+      "kind": "single",
+      "role": {
+        "es": "Junior React Developer",
+        "en": "Junior React Developer"
+      },
+      "company": {
+        "es": "Veres",
+        "en": "Veres"
+      },
+      "project": {
+        "es": "MVP para instituciones educativas",
+        "en": "MVP for educational institutions"
+      },
+      "period": {
+        "from": "11/2019",
+        "to": "10/2020"
+      },
+      "location": {
+        "es": "Valencia (Remoto)",
+        "en": "Valencia (Remote)"
+      },
+      "bullets": [
+        {
+          "es": "Arranque de proyecto para entidades educativas con maquetación responsive basada en HTML, CSS, SASS, Grid y Flexbox.",
+          "en": "Started the project for educational institutions with responsive layouts using HTML, CSS, SASS, Grid, and Flexbox."
+        },
+        {
+          "es": "Desarrollo de panel administrativo con rutas públicas/privadas, gestión de permisos y estado global con Redux.",
+          "en": "Developed an admin panel with public/private routes, permission handling, and global state managed with Redux."
+        }
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Redux",
+        "SASS",
+        "ESLint"
+      ]
+    },
+    {
+      "kind": "single",
+      "role": {
+        "es": "Junior Vue Developer",
+        "en": "Junior Vue Developer"
+      },
+      "company": {
+        "es": "TECNIFICA COLECTIVOS\nGestionado por GeeksHubs (Grupo Alfatec)",
+        "en": "TECNIFICA COLECTIVOS\nManaged by GeeksHubs (Alfatec Group)"
+      },
+      "project": {
+        "es": "Proyecto MVP documentación y contable para autónomos",
+        "en": "MVP project: documentation and accounting for freelancers"
+      },
+      "period": {
+        "from": "02/2019",
+        "to": "10/2019"
+      },
+      "location": {
+        "es": "Valencia",
+        "en": "Valencia"
+      },
+      "bullets": [
+        {
+          "es": "Desarrollo con VueJS utilizando Docker, con sprints semanales gestionados con Trello.",
+          "en": "Development with VueJS using Docker, with weekly sprints managed with Trello."
+        },
+        {
+          "es": "Diseño y maquetación con CSS Grid, Flexbox, SASS y Bootstrap.",
+          "en": "Design and layout with CSS Grid, Flexbox, SASS, and Bootstrap."
+        },
+        {
+          "es": "Implementación de lógica basada en componentes, servicios y variables de entorno.",
+          "en": "Implementation of logic based on components, services, and environment variables."
+        },
+        {
+          "es": "Intercambio de datos con Vuex y manejo de almacenamiento local y de sesión.",
+          "en": "Data exchange with Vuex and handling of local and session storage."
+        }
+      ],
+      "technologies": [
+        "Vue",
+        "TypeScript",
+        "CSS",
+        "SASS",
+        "Bootstrap",
+        "Git",
+        "Bitbucket",
+        "Docker",
+        "Trello",
+        "Vuex",
+        "ESLint",
+        "Prettier",
+        "Agile",
+        "Grid",
+        "Flexbox"
+      ]
+    },
+    {
+      "kind": "single",
+      "role": {
+        "es": "Recepcionista bilingüe Inglés/Español",
+        "en": "Receptionist bilingual English/Spanish"
+      },
+      "company": {
+        "es": "Instituto Cervantes Manchester",
+        "en": "Instituto Cervantes Manchester"
+      },
+      "project": {
+        "es": "Departamento de recepción",
+        "en": "Reception department"
+      },
+      "period": {
+        "from": "03/2017",
+        "to": "10/2017"
+      },
+      "location": {
+        "es": "Manchester, Reino Unido",
+        "en": "Manchester, UK"
+      },
+      "bullets": [],
+      "technologies": []
+    },
+    {
+      "kind": "single",
+      "role": {
+        "es": "Líder de equipo logístico",
+        "en": "Logistic team leader"
+      },
+      "company": {
+        "es": "XPO Logistics",
+        "en": "XPO Logistics"
+      },
+      "project": {
+        "es": "Seguimiento de línea de producción, control de calidad y KPIs.",
+        "en": "Production line monitoring, quality control and KPIs."
+      },
+      "period": {
+        "from": "10/2014",
+        "to": "03/2017"
+      },
+      "location": {
+        "es": "Manchester, Reino Unido",
+        "en": "Manchester, UK"
+      },
+      "bullets": [],
+      "technologies": []
+    },
+    {
+      "kind": "single",
+      "role": {
+        "es": "Técnico informático Tier 1 y Tier 2",
+        "en": "IT Technician – 1st & 2nd line"
+      },
+      "company": {
+        "es": "Vodafone España",
+        "en": "Vodafone España"
+      },
+      "project": {
+        "es": "Atención al cliente.",
+        "en": "Customer service."
+      },
+      "period": {
+        "from": "06/2012",
+        "to": "08/2014"
+      },
+      "location": {
+        "es": "Valencia",
+        "en": "Valencia"
+      },
+      "bullets": [],
+      "technologies": []
+    },
+    {
+      "kind": "single",
+      "role": {
+        "es": "Técnico informático - Propietario de Franquicia",
+        "en": "IT Technician (Freelance)"
+      },
+      "company": {
+        "es": "APP Informática",
+        "en": "APP Informática"
+      },
+      "project": {
+        "es": "Funciones / tareas:",
+        "en": "Functions/tasks:"
+      },
+      "period": {
+        "from": "05/2004",
+        "to": "10/2011"
+      },
+      "location": {
+        "es": "Sagunto (Valencia)",
+        "en": "Sagunto (Valencia)"
+      },
+      "bullets": [
+        {
+          "es": "Montaje, reparación de equipos, reparación, copias de seguridad y restauración.",
+          "en": "Assembly, equipment repair, repair, backup and restoration."
+        },
+        {
+          "es": "Elaboración de presupuestos a medida y ventas.",
+          "en": "Preparation of custom budgets, quotations and sales."
+        }
+      ],
+      "technologies": []
+    }
+  ],
+  "courses": [
+    {
+      "name": {
+        "es": "React",
+        "en": "React"
+      },
+      "items": [
+        {
+          "title": "React - The Complete Guide (incl. Hooks, React Router, Redux)",
+          "length": "48h",
+          "author": "Maximillian Schwarzmüller"
+        },
+        {
+          "title": "React: De cero a experto (Hooks y MERN)",
+          "length": "49h",
+          "author": "Fernando Herrera"
+        },
+        {
+          "title": "React PRO: Lleva tus bases al siguiente nivel",
+          "length": "27h",
+          "author": "Fernando Herrera"
+        },
+        {
+          "title": "React - La Guia Completa: Hooks Context Redux MERN +15 Apps",
+          "length": "67h",
+          "author": "Juan Pablo De La Torre Valdez"
+        },
+        {
+          "title": "Web Personal MERN Full Stack: MongoDB, Express, React y Node",
+          "length": "34h",
+          "author": "Agustin Navarro Galdon"
+        },
+        {
+          "title": "React and NestJS: A Practical Guide with Docker",
+          "length": "7h",
+          "author": "Antonio Papa"
+        }
+      ]
+    },
+    {
+      "name": {
+        "es": "React Native",
+        "en": "React Native"
+      },
+      "items": [
+        {
+          "title": "React Native - The Practical Guide [2022]",
+          "length": "29h",
+          "author": "Maximillian Schwarzmüller"
+        },
+        {
+          "title": "React Native: Aplicaciones nativas para iOS y Android",
+          "length": "44h",
+          "author": "Fernando Herrera"
+        }
+      ]
+    },
+    {
+      "name": {
+        "es": "Otros",
+        "en": "Others"
+      },
+      "items": [
+        {
+          "title": "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
+          "length": "41h",
+          "author": "Maximillian Schwarzmüller"
+        },
+        {
+          "title": "CSS - The Complete Guide (Flexbox, Grid & SASS)",
+          "length": "22h",
+          "author": "Maximillian Schwarzmüller"
+        },
+        {
+          "title": "Master NestJS - The JavaScript Node.js Framework",
+          "length": "8h",
+          "author": "Piotr Jura"
+        }
+      ]
+    }
+  ]
+} satisfies CvData
