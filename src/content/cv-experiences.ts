@@ -1,14 +1,26 @@
 import type { CvData } from '../domain/cv-schema'
 import { l, period } from './cv-content-helpers'
 
+type LocalizedText = ReturnType<typeof l>
+
+const ROLE_FRONTEND_REACT_SOFTWARE_ENGINEER = l(
+  'Frontend React Software Engineer',
+  'Frontend React Software Engineer',
+)
+const LOCATION_VALENCIA_REMOTE = l('Valencia (Remoto)', 'Valencia (Remote)')
+const LOCATION_MANCHESTER_UK = l('Manchester, Reino Unido', 'Manchester, UK')
+
+const emptyBullets = (): LocalizedText[] => []
+const emptyTechnologies = (): string[] => []
+
 export const cvExperiences = [
   {
     kind: "grouped",
     company: l("CAPGEMINI", "CAPGEMINI"),
-    location: l("Valencia (Remoto)", "Valencia (Remote)"),
+    location: LOCATION_VALENCIA_REMOTE,
     positions: [
       {
-        role: l("Frontend React Software Engineer", "Frontend React Software Engineer"),
+        role: ROLE_FRONTEND_REACT_SOFTWARE_ENGINEER,
         project: l("Onboarding", "Onboarding"),
         client: l("Openbank", "Openbank"),
         period: period("04/2025", "Present"),
@@ -36,7 +48,7 @@ export const cvExperiences = [
         ]
       },
       {
-        role: l("Frontend React Software Engineer", "Frontend React Software Engineer"),
+        role: ROLE_FRONTEND_REACT_SOFTWARE_ENGINEER,
         project: l("Planes de pensiones", "Pension plans"),
         client: l("VidaCaixa", "VidaCaixa"),
         period: period("12/2024", "04/2025"),
@@ -70,7 +82,7 @@ export const cvExperiences = [
     company: l("BABEL GROUP", "BABEL GROUP"),
     project: l("Banca Digital", "Digital Banking"),
     period: period("03/2023", "12/2024"),
-    location: l("Málaga (Remoto)", "Málaga (Remote)"),
+    location: l('Málaga (Remoto)', 'Málaga (Remote)'),
     bullets: [
       l("Refactorización con principios Clean Code y SOLID para migrar componentes de clase a componentes funcionales.", "Refactored the codebase with Clean Code and SOLID principles, migrating class components to functional components."),
       l("Desarrollo de nuevas funcionalidades y mejoras UI a partir de diseños de Figma y librería de componentes interna.", "Developed new features and UI improvements based on Figma designs and the internal component library."),
@@ -95,7 +107,7 @@ export const cvExperiences = [
     company: l("CLEVERPY MACHINE LEARNING - Cliente: IDRICA", "CLEVERPY MACHINE LEARNING - Client: IDRICA"),
     project: l("MVP de control de calidad de aguas residuales industriales", "MVP for industrial wastewater quality control"),
     period: period("10/2021", "03/2023"),
-    location: l("Valencia (Remoto)", "Valencia (Remote)"),
+    location: LOCATION_VALENCIA_REMOTE,
     bullets: [
       l("Puesta en marcha del proyecto con arquitectura cliente y construcción del frontend para cuadros de mando técnicos.", "Kicked off the project aligned with client architecture and built frontend dashboards for technical monitoring."),
       l("Integración de Azure, Chart.js, OpenLayers, AG Grid y DevExtreme en un ecosistema React + TypeScript.", "Integrated Azure, Chart.js, OpenLayers, AG Grid, and DevExtreme in a React + TypeScript ecosystem."),
@@ -119,7 +131,7 @@ export const cvExperiences = [
     company: l("TMC SPAIN - Cliente: BRICODEPOT", "TMC SPAIN - Client: BRICODEPOT"),
     project: l("MVP de cálculo de costes de transporte", "MVP for transport cost calculation"),
     period: period("01/2021", "09/2021"),
-    location: l("Madrid (Remoto)", "Madrid (Remote)"),
+    location: l('Madrid (Remoto)', 'Madrid (Remote)'),
     bullets: [
       l("Creación de microservicio SaaS API REST para cálculo de costes logísticos y reglas de negocio.", "Built a SaaS REST API microservice for logistics cost calculation and business rules."),
       l("Integración con agencias de transporte mediante servicios REST, SOAP y XML.", "Integrated with shipping agencies through REST, SOAP, and XML services."),
@@ -139,7 +151,7 @@ export const cvExperiences = [
     company: l("VERES", "VERES"),
     project: l("MVP para instituciones educativas", "MVP for educational institutions"),
     period: period("11/2019", "10/2020"),
-    location: l("Valencia (Remoto)", "Valencia (Remote)"),
+    location: LOCATION_VALENCIA_REMOTE,
     bullets: [
       l("Arranque de proyecto para entidades educativas con maquetación responsive basada en HTML, CSS, SASS, Grid y Flexbox.", "Started the project for educational institutions with responsive layouts using HTML, CSS, SASS, Grid, and Flexbox."),
       l("Desarrollo de panel administrativo con rutas públicas/privadas, gestión de permisos y estado global con Redux.", "Developed an admin panel with public/private routes, permission handling, and global state managed with Redux.")
@@ -189,9 +201,9 @@ export const cvExperiences = [
     company: l("INSTITUTO CERVANTES MANCHESTER", "INSTITUTO CERVANTES MANCHESTER"),
     project: l("Departamento de recepción", "Reception department"),
     period: period("03/2017", "10/2017"),
-    location: l("Manchester, Reino Unido", "Manchester, UK"),
-    bullets: [],
-    technologies: []
+    location: LOCATION_MANCHESTER_UK,
+    bullets: emptyBullets(),
+    technologies: emptyTechnologies()
   },
   {
     kind: "single",
@@ -199,9 +211,9 @@ export const cvExperiences = [
     company: l("XPO LOGISTICS", "XPO LOGISTICS"),
     project: l("Seguimiento de línea de producción, control de calidad y KPIs.", "Production line monitoring, quality control and KPIs."),
     period: period("10/2014", "03/2017"),
-    location: l("Manchester, Reino Unido", "Manchester, UK"),
-    bullets: [],
-    technologies: []
+    location: LOCATION_MANCHESTER_UK,
+    bullets: emptyBullets(),
+    technologies: emptyTechnologies()
   },
   {
     kind: "single",
@@ -210,8 +222,8 @@ export const cvExperiences = [
     project: l("Atención al cliente.", "Customer service."),
     period: period("06/2012", "08/2014"),
     location: l("Valencia", "Valencia"),
-    bullets: [],
-    technologies: []
+    bullets: emptyBullets(),
+    technologies: emptyTechnologies()
   },
   {
     kind: "single",
