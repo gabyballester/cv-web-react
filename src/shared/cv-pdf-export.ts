@@ -1,8 +1,7 @@
-import html2canvas from 'html2canvas'
-import { jsPDF } from 'jspdf'
+import type { jsPDF as JsPdfType } from 'jspdf'
 
 function addImageContainA4(
-  pdf: jsPDF,
+  pdf: JsPdfType,
   canvas: HTMLCanvasElement,
   imgData: string,
   mime: 'JPEG' | 'PNG',
@@ -36,6 +35,9 @@ export async function downloadCvPdf(paperStack: HTMLElement, filename: string) {
     await document.fonts.ready.catch(() => undefined)
   }
 
+  const { default: html2canvas } = await import('html2canvas')
+  // Lazy-load jsPDF to keep initial bundle lighter for normal CV viewing.
+  const { jsPDF } = await import('jspdf')
   const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' })
 
   for (let i = 0; i < pages.length; i++) {

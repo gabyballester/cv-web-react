@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 CV EN Gabriel Ballester.pdf
 CV SP Gabriel Ballester.pdf
+playwright-report/
+test-results/

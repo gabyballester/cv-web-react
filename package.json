@@ -10,7 +10,9 @@
     "lint": "pnpm exec eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "preview": "pnpm exec vite preview"
+    "preview": "pnpm exec vite preview",
+    "test:visual": "pnpm exec playwright test --config=playwright.visual.config.ts",
+    "test:visual:update": "pnpm exec playwright test --config=playwright.visual.config.ts --update-snapshots"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -25,10 +27,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@playwright/test": "^1.58.2",
     "@types/node": "^24.12.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react-swc": "^4.3.0",
+    "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^7.0.1",
