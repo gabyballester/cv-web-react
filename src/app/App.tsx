@@ -5,6 +5,7 @@ import { cvFixedConfig } from '../domain/cv-data'
 import { useCvStore } from '../stores/cv-store'
 import { downloadCvPdf } from '../shared/cv-pdf-export'
 import './App.css'
+import '../features/cv/styles/cv-layout.css'
 import '../features/cv/styles/experience.css'
 
 function App() {

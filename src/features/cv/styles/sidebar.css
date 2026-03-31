@@ -145,11 +145,6 @@
   line-height: 1.28;
 }
 
-.cv-sidebar-pair-trail-text--ghost {
-  visibility: hidden;
-  min-width: 2.2rem;
-}
-
 .contact-icon {
   width: var(--cv-sidebar-icon-slot);
   height: var(--cv-sidebar-icon-slot);

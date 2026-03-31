@@ -1,7 +1,6 @@
 import './profile-photo-card.css'
 
 type Props = {
-  coverClassName?: string
   photoSrc: string
   photoAlt: string
   onPhotoError: () => void
@@ -9,7 +8,6 @@ type Props = {
 }
 
 export function ProfilePhotoCard({
-  coverClassName = 'sidebar-cover',
   photoSrc,
   photoAlt,
   onPhotoError,
@@ -17,7 +15,7 @@ export function ProfilePhotoCard({
 }: Props) {
   return (
     <div className="sidebar-profile-card profile-style-soft">
-      <div className={coverClassName} />
+      <div className="sidebar-cover" />
       <div className="photo-wrap">
         {!photoLoadError ? (
           <img src={photoSrc} alt={photoAlt} className="profile-photo" onError={onPhotoError} />

@@ -22,14 +22,6 @@
   );
 }
 
-.profile-style-clean .sidebar-cover {
-  height: 54px;
-  background:
-    radial-gradient(circle at 85% 20%, rgb(255 255 255 / 34%) 0 16%, transparent 18%),
-    radial-gradient(circle at 12% 85%, rgb(255 255 255 / 22%) 0 14%, transparent 18%),
-    linear-gradient(120deg, #0c4f79 0%, #0f6c97 55%, #178cbb 100%);
-}
-
 .photo-wrap {
   flex: 1 1 auto;
   display: flex;
