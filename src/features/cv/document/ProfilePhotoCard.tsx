@@ -1,3 +1,5 @@
+import './profile-photo-card.css'
+
 type Props = {
   coverClassName?: string
   photoSrc: string

@@ -1,0 +1,76 @@
+.sidebar-profile-card {
+  margin: 0 0 1.5rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--panel);
+  text-align: center;
+  box-shadow: 0 1px 0 rgb(15 23 42 / 6%);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.sidebar-cover {
+  height: 44px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    100deg,
+    var(--accent-topbar-start) 0%,
+    var(--accent-topbar-mid) 58%,
+    var(--accent-topbar-end) 100%
+  );
+}
+
+.profile-style-clean .sidebar-cover {
+  height: 54px;
+  background:
+    radial-gradient(circle at 85% 20%, rgb(255 255 255 / 34%) 0 16%, transparent 18%),
+    radial-gradient(circle at 12% 85%, rgb(255 255 255 / 22%) 0 14%, transparent 18%),
+    linear-gradient(120deg, #0c4f79 0%, #0f6c97 55%, #178cbb 100%);
+}
+
+.photo-wrap {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: -20px 0 0;
+  padding: 0 0.45rem 0.4rem;
+  box-sizing: border-box;
+  min-height: 5.25rem;
+}
+
+.profile-photo {
+  width: 104px;
+  height: 104px;
+  border-radius: 999px;
+  object-fit: cover;
+  object-position: center 35%;
+  transform: translateY(-3px);
+  border: 3px solid var(--white);
+  box-shadow:
+    0 0 0 1px rgb(2 32 71 / 8%),
+    0 5px 14px rgb(2 32 71 / 20%);
+  display: block;
+}
+
+.photo-placeholder {
+  width: 104px;
+  height: 104px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent-soft-start), var(--accent-soft-end));
+  color: var(--text-strong);
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0;
+  border: 3px solid var(--white);
+  box-sizing: border-box;
+  font-size: 0.85rem;
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 1px rgb(2 32 71 / 8%),
+    0 5px 14px rgb(2 32 71 / 20%);
+}

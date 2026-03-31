@@ -3,7 +3,7 @@ import type { UiLabels } from './cv-document-types'
 import { SkillProfileHighlights } from '../components/SkillProfileHighlights'
 import { SidebarLeadingLabelItem } from '../components/SidebarLeadingLabelItem'
 import { ContactRow } from '../components/ContactRow'
-import { SidebarSection } from '../components/SidebarSection'
+import { CvTitledSection } from '../components/CvTitledSection'
 import { localize } from '../../../shared/locale-utils'
 import { ProfilePhotoCard } from './ProfilePhotoCard'
 
@@ -45,14 +45,14 @@ export function CvSidebarPage1({
         photoLoadError={photoLoadError}
         onPhotoError={onPhotoError}
       />
-      <SidebarSection title={labels.professionalSummary} className="sidebar-summary">
+      <CvTitledSection title={labels.professionalSummary} className="sidebar-summary">
         {cvData.profile.quotes.map((q) => (
           <p key={q.es} className="quote quote-summary-line">
             {localize(locale, q)}
           </p>
         ))}
-      </SidebarSection>
-      <SidebarSection title={labels.contactData}>
+      </CvTitledSection>
+      <CvTitledSection title={labels.contactData}>
         <ul className="cv-sidebar-contact-list">
           <ContactRow icon="location">
             <span>{cvData.profile.city}</span>
@@ -71,8 +71,8 @@ export function CvSidebarPage1({
             </a>
           </ContactRow>
         </ul>
-      </SidebarSection>
-      <SidebarSection title="LinkedIn QR">
+      </CvTitledSection>
+      <CvTitledSection title="LinkedIn QR">
         <div className="qr-wrap qr-wrap--tight">
           {!qrLoadError ? (
             <img src={linkedInQrPath} alt="LinkedIn QR" className="qr-image" onError={onQrError} />
@@ -80,8 +80,8 @@ export function CvSidebarPage1({
             <div className="qr-placeholder">QR</div>
           )}
         </div>
-      </SidebarSection>
-      <SidebarSection title={labels.languages}>
+      </CvTitledSection>
+      <CvTitledSection title={labels.languages}>
         <ul className="cv-sidebar-contact-list">
           {cvData.profile.languages.map((item, idx) => (
             <SidebarLeadingLabelItem
@@ -100,7 +100,7 @@ export function CvSidebarPage1({
             />
           ))}
         </ul>
-      </SidebarSection>
+      </CvTitledSection>
       {cvData.profile.skillProfile.length > 0 ? (
         <SkillProfileHighlights cvData={cvData} locale={locale} title={labels.coreExpertise} />
       ) : null}

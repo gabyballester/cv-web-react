@@ -1,7 +1,7 @@
 import type { Locale } from '../../../domain/cv-schema'
 import type { CourseCategory, UiLabels } from './cv-document-types'
 import { CourseItem } from '../components/blocks'
-import { SidebarSection } from '../components/SidebarSection'
+import { CvTitledSection } from '../components/CvTitledSection'
 import { localize } from '../../../shared/locale-utils'
 import '../styles/courses.css'
 
@@ -18,7 +18,7 @@ export function CvSidebarPage2({
 }: Props) {
   return (
     <aside className="cv-sidebar cv-sidebar--p2">
-      <SidebarSection title={labels.courses} className="courses-sidebar-p2">
+      <CvTitledSection title={labels.courses} className="courses-sidebar-p2">
         {courseCategories.map((category) => (
           <div key={category.name.es} className="course-category">
             <h4 className="cv-section-title cv-section-title--category">
@@ -35,7 +35,7 @@ export function CvSidebarPage2({
             ))}
           </div>
         ))}
-      </SidebarSection>
+      </CvTitledSection>
     </aside>
   )
 }

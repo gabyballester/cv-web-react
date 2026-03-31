@@ -1,0 +1,37 @@
+.cv-content h1 {
+  margin: 0;
+  font-size: 1.48rem;
+}
+
+.hero {
+  margin: 0 0 1.5rem;
+  padding-top: 0.12rem;
+  text-align: center;
+}
+
+.hero-banner {
+  height: 0.34rem;
+  width: 100%;
+  border-radius: 999px;
+  margin-bottom: 0.42rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-hero-end));
+}
+
+.role-tag {
+  color: var(--accent-strong);
+  font-weight: 700;
+  margin: 0.22rem 0 0.38rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.04rem;
+  line-height: 1.35;
+  font-family: var(--font-sans);
+}
+
+.cv-content .education-section > .section-header + .education-item,
+.cv-content .education-section > .education-item:first-child {
+  margin-top: 0;
+}
+
+.cv-content .education-section {
+  margin-bottom: 1.5rem;
+}

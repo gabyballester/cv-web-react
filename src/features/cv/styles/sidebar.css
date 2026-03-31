@@ -1,5 +1,8 @@
-.sidebar-summary {
-  margin: 0 0 0.2rem;
+.quote {
+  font-size: 0.78rem;
+  color: var(--muted-strong);
+  line-height: 1.5;
+  margin: 0.38rem 0 0.48rem;
 }
 
 .cv-sidebar .sidebar-summary .quote {
@@ -24,14 +27,18 @@
 }
 
 .sidebar-pair-section {
-  margin: 0;
+  margin: 0 0 1rem;
   break-inside: avoid;
   page-break-inside: avoid;
 }
 
+.sidebar-pair-section:last-of-type {
+  margin-bottom: 0;
+}
+
 .sidebar-pair-section > .cv-section-header {
-  margin-top: var(--section-title-margin-top);
-  margin-bottom: var(--section-title-margin-bottom);
+  margin-top: 0;
+  margin-bottom: .8rem;
 }
 
 .sidebar-pair-section .cv-sidebar-contact-list {
@@ -256,6 +263,3 @@
   font-size: var(--font-size-xs);
 }
 
-.cv-sidebar--p1 > .sidebar-pair-section:first-of-type > .cv-section-header {
-  margin-top: 0.58rem;
-}

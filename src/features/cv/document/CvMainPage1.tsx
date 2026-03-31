@@ -1,8 +1,8 @@
 import type { CvData, Locale } from '../../../domain/cv-schema'
 import type { UiLabels } from './cv-document-types'
 import { EducationBlock, ExperienceBlock } from '../components/blocks'
-import { SectionHeader } from '../components/SectionHeader'
-import { SectionTitle } from '../components/SectionTitle'
+import { CvSectionHeading } from '../components/CvSectionHeading'
+import './cv-main-page1.css'
 
 type Props = {
   cvData: CvData
@@ -25,21 +25,13 @@ export function CvMainPage1({
         <p className="role-tag">{cvData.profile.roleTag}</p>
       </header>
       <section className="education-section">
-        <SectionHeader className="section-header">
-          <SectionTitle as="h2" variant="main">
-            {labels.education}
-          </SectionTitle>
-        </SectionHeader>
+        <CvSectionHeading title={labels.education} />
         {cvData.education.map((item) => (
           <EducationBlock key={item.title.es} item={item} locale={locale} />
         ))}
       </section>
       <section>
-        <SectionHeader className="section-header">
-          <SectionTitle as="h2" variant="main">
-            {labels.experience}
-          </SectionTitle>
-        </SectionHeader>
+        <CvSectionHeading title={labels.experience} />
         {experiences.map((exp) => {
           const blockKey =
             exp.kind === 'grouped'
