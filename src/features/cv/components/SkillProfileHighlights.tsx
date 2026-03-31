@@ -2,6 +2,7 @@ import type { CvData, Locale, SkillProfileEntry } from '../../../domain/cv-schem
 import { computeTenureYears, formatTenureYearsWhole } from '../../../shared/skill-tenure'
 import { localize } from '../../../shared/locale-utils'
 import { SidebarPairListItem } from './SidebarPairListItem'
+import { SidebarSection } from './SidebarSection'
 
 function SkillIcon({ id, accent }: { id: SkillProfileEntry['icon']; accent: string }) {
   const common = {
@@ -154,8 +155,7 @@ export function SkillProfileHighlights({ cvData, locale, title }: Props) {
   if (items.length === 0) return null
 
   return (
-    <section className="sidebar-pair-section" aria-label={title}>
-      <h3 className="sidebar-section-title">{title}</h3>
+    <SidebarSection title={title}>
       <ul className="cv-sidebar-contact-list">
         {items.map((row) => {
           const years = computeTenureYears(row.tenureKey, cvData)
@@ -180,6 +180,6 @@ export function SkillProfileHighlights({ cvData, locale, title }: Props) {
           )
         })}
       </ul>
-    </section>
+    </SidebarSection>
   )
 }

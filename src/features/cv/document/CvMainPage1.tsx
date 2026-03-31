@@ -1,18 +1,14 @@
 import type { CvData, Locale } from '../../../domain/cv-schema'
 import type { UiLabels } from './cv-document-types'
 import { EducationBlock, ExperienceBlock } from '../components/blocks'
+import { SectionHeader } from '../components/SectionHeader'
+import { SectionTitle } from '../components/SectionTitle'
 
 type Props = {
   cvData: CvData
   locale: Locale
   labels: UiLabels
   experiences: CvData['experiences']
-  experienceIndexOffset: number
-  onOpenEducationModal: () => void
-  onOpenExperienceModal: () => void
-  onEditEducation: (index: number) => void
-  onEditExperience: (globalIndex: number) => void
-  onEditGroupedPosition: (globalIndex: number, positionIndex: number) => void
 }
 
 export function CvMainPage1({
@@ -20,12 +16,6 @@ export function CvMainPage1({
   locale,
   labels,
   experiences,
-  experienceIndexOffset,
-  onOpenEducationModal,
-  onOpenExperienceModal,
-  onEditEducation,
-  onEditExperience,
-  onEditGroupedPosition,
 }: Props) {
   return (
     <section className="cv-content">
@@ -34,31 +24,23 @@ export function CvMainPage1({
         <h1>{cvData.profile.name}</h1>
         <p className="role-tag">{cvData.profile.roleTag}</p>
       </header>
-      <section className="editable-section education-section">
-        <div className="section-header">
-          <h2>{labels.education}</h2>
-          <button type="button" className="section-plus no-print" onClick={onOpenEducationModal}>
-            +
-          </button>
-        </div>
-        {cvData.education.map((item, eduIdx) => (
-          <EducationBlock
-            key={item.title.es}
-            item={item}
-            locale={locale}
-            onEdit={() => onEditEducation(eduIdx)}
-          />
+      <section className="education-section">
+        <SectionHeader className="section-header">
+          <SectionTitle as="h2" variant="main">
+            {labels.education}
+          </SectionTitle>
+        </SectionHeader>
+        {cvData.education.map((item) => (
+          <EducationBlock key={item.title.es} item={item} locale={locale} />
         ))}
       </section>
-      <section className="editable-section">
-        <div className="section-header">
-          <h2>{labels.experience}</h2>
-          <button type="button" className="section-plus no-print" onClick={onOpenExperienceModal}>
-            +
-          </button>
-        </div>
-        {experiences.map((exp, idx) => {
-          const globalIdx = experienceIndexOffset + idx
+      <section>
+        <SectionHeader className="section-header">
+          <SectionTitle as="h2" variant="main">
+            {labels.experience}
+          </SectionTitle>
+        </SectionHeader>
+        {experiences.map((exp) => {
           const blockKey =
             exp.kind === 'grouped'
               ? `grouped-${exp.company.es}`
@@ -69,12 +51,6 @@ export function CvMainPage1({
               exp={exp}
               locale={locale}
               technologiesLabel={labels.technologies}
-              onEdit={exp.kind === 'single' ? () => onEditExperience(globalIdx) : undefined}
-              onEditGroupedPosition={
-                exp.kind === 'grouped'
-                  ? (positionIndex) => onEditGroupedPosition(globalIdx, positionIndex)
-                  : undefined
-              }
             />
           )
         })}

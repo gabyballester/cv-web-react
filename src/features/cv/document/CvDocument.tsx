@@ -31,13 +31,6 @@ export function CvDocument(props: CvDocumentActions) {
     qrLoadError,
     onPhotoError,
     onQrError,
-    onOpenCourseModal,
-    onOpenEducationModal,
-    onOpenExperienceModal,
-    onEditCourse,
-    onEditEducation,
-    onEditExperience,
-    onEditGroupedPosition,
   } = props
 
   return (
@@ -59,12 +52,6 @@ export function CvDocument(props: CvDocumentActions) {
           locale={locale}
           labels={labels}
           experiences={firstPageExperiences}
-          experienceIndexOffset={0}
-          onOpenEducationModal={onOpenEducationModal}
-          onOpenExperienceModal={onOpenExperienceModal}
-          onEditEducation={onEditEducation}
-          onEditExperience={onEditExperience}
-          onEditGroupedPosition={onEditGroupedPosition}
         />
       </CvA4Shell>
 
@@ -73,16 +60,11 @@ export function CvDocument(props: CvDocumentActions) {
           locale={locale}
           labels={labels}
           courseCategories={allCourseCategories}
-          onOpenCourseModal={onOpenCourseModal}
-          onEditCourse={onEditCourse}
         />
         <CvMainPage2
           locale={locale}
           labels={labels}
-          allExperiences={cvData.experiences}
           experiences={secondPageExperiences}
-          onEditExperience={onEditExperience}
-          onEditGroupedPosition={onEditGroupedPosition}
         />
       </CvA4Shell>
     </section>

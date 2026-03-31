@@ -28,7 +28,10 @@ type CompanyLineProps = {
 }
 
 /** Company / client line — same visual weight for single and grouped entries. */
-export function ExperienceCompanyLine({ text, className = 'meta experience-company' }: CompanyLineProps) {
+export function ExperienceCompanyLine({
+  text,
+  className = 'meta experience-company',
+}: CompanyLineProps) {
   return <p className={className}>{text}</p>
 }
 
@@ -54,12 +57,30 @@ export function ExperienceCompanyLocationRow({
 
 type ProjectLineProps = {
   text: string
+  projectLabel: string
+  clientLabel: string
+  clientText?: string
+  showProjectLabel?: boolean
   tight?: boolean
 }
 
-export function ExperienceProjectLine({ text, tight }: ProjectLineProps) {
-  const cls = tight ? 'experience-project-line experience-project-line--tight' : 'experience-project-line'
-  return <p className={cls}>{text}</p>
+export function ExperienceProjectLine({
+  text,
+  projectLabel,
+  clientLabel,
+  clientText,
+  showProjectLabel = true,
+  tight,
+}: ProjectLineProps) {
+  const cls = tight
+    ? 'experience-project-line experience-project-line--tight'
+    : 'experience-project-line'
+  const client = clientText?.trim() ?? ''
+  const left = showProjectLabel ? `${projectLabel}: ${text}` : text
+  const inlineProjectClient = client
+    ? `${left} - ${clientLabel}: ${client.toUpperCase()}`
+    : left
+  return <p className={cls}>{inlineProjectClient}</p>
 }
 
 type BulletsProps = {
@@ -94,6 +115,9 @@ export function ExperienceTechnologiesLine({ technologiesLabel, technologies }: 
 
 type GroupProjectRowProps = {
   projectText: string
+  projectLabel: string
+  clientLabel: string
+  clientText?: string
   periodFrom: string
   periodTo: string
   locale: Locale
@@ -103,15 +127,24 @@ type GroupProjectRowProps = {
 /** Grouped experience: project title + per-position dates on one row. */
 export function ExperienceGroupProjectDatesRow({
   projectText,
+  projectLabel,
+  clientLabel,
+  clientText,
   periodFrom,
   periodTo,
   locale,
   tight,
 }: GroupProjectRowProps) {
-  const pClass = tight ? 'experience-group-project experience-group-project--tight' : 'experience-group-project'
+  const pClass = tight
+    ? 'experience-group-project experience-group-project--tight'
+    : 'experience-group-project'
+  const client = clientText?.trim() ?? ''
+  const inlineProjectClient = client
+    ? `${projectLabel}: ${projectText} - ${clientLabel}: ${client.toUpperCase()}`
+    : `${projectLabel}: ${projectText}`
   return (
     <div className="item-head experience-group-project-row">
-      <p className={pClass}>{projectText}</p>
+      <p className={pClass}>{inlineProjectClient}</p>
       <span>
         {periodFrom} - {localizePeriodToken(locale, periodTo)}
       </span>
@@ -172,9 +205,10 @@ type GroupPositionBodyProps = {
   locale: Locale
   technologiesLabel: string
   projectText: string
+  projectLabel: string
+  clientLabel: string
+  clientText?: string
   rowCompact: boolean
-  /** Short vertical segment only: links this project to the next within the same company. */
-  showConnector: boolean
 }
 
 /** One position inside a grouped company: rail (dot + short join) + project + details. */
@@ -183,12 +217,17 @@ export function ExperienceGroupPositionBody({
   locale,
   technologiesLabel,
   projectText,
+  projectLabel,
+  clientLabel,
+  clientText,
   rowCompact,
-  showConnector,
 }: GroupPositionBodyProps) {
   const projectBlock = projectText ? (
     <ExperienceGroupProjectDatesRow
       projectText={projectText}
+      projectLabel={projectLabel}
+      clientLabel={clientLabel}
+      clientText={clientText}
       periodFrom={pos.period.from}
       periodTo={pos.period.to}
       locale={locale}
@@ -207,7 +246,6 @@ export function ExperienceGroupPositionBody({
       <div className="experience-group-body-topline">
         <div className="experience-group-rail" aria-hidden="true">
           <span className="experience-group-rail-dot" />
-          {showConnector ? <span className="experience-group-rail-join" /> : null}
         </div>
         <div className="experience-group-body-project-wrap">{projectBlock}</div>
       </div>

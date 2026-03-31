@@ -1,12 +1,18 @@
 import type { CvData, Locale } from '../../../domain/cv-schema'
 import type { UiLabels } from './cv-document-types'
 import { SkillProfileHighlights } from '../components/SkillProfileHighlights'
-import { SidebarPairListItem } from '../components/SidebarPairListItem'
+import { SidebarLeadingLabelItem } from '../components/SidebarLeadingLabelItem'
 import { ContactRow } from '../components/ContactRow'
+import { SidebarSection } from '../components/SidebarSection'
 import { localize } from '../../../shared/locale-utils'
 import { ProfilePhotoCard } from './ProfilePhotoCard'
 
-const languageFlagPaths = ['/flags/gb.svg', '/flags/es-valencia.svg', '/flags/fr.svg', '/flags/de.svg']
+const languageFlagPaths = [
+  '/flags/gb.svg',
+  '/flags/es-valencia.svg',
+  '/flags/fr.svg',
+  '/flags/de.svg',
+]
 
 type Props = {
   cvData: CvData
@@ -39,16 +45,14 @@ export function CvSidebarPage1({
         photoLoadError={photoLoadError}
         onPhotoError={onPhotoError}
       />
-      <div className="sidebar-summary">
-        <h3 className="sidebar-section-title">{labels.professionalSummary}</h3>
+      <SidebarSection title={labels.professionalSummary} className="sidebar-summary">
         {cvData.profile.quotes.map((q) => (
           <p key={q.es} className="quote quote-summary-line">
             {localize(locale, q)}
           </p>
         ))}
-      </div>
-      <section className="sidebar-pair-section" aria-label={labels.contactData}>
-        <h3 className="sidebar-section-title">{labels.contactData}</h3>
+      </SidebarSection>
+      <SidebarSection title={labels.contactData}>
         <ul className="cv-sidebar-contact-list">
           <ContactRow icon="location">
             <span>{cvData.profile.city}</span>
@@ -67,49 +71,38 @@ export function CvSidebarPage1({
             </a>
           </ContactRow>
         </ul>
-      </section>
-      <h3 className="sidebar-section-title">LinkedIn QR</h3>
-      <div className="qr-wrap qr-wrap--tight">
-        {!qrLoadError ? (
-          <img
-            src={linkedInQrPath}
-            alt="LinkedIn QR"
-            className="qr-image"
-            onError={onQrError}
-          />
-        ) : (
-          <div className="qr-placeholder">QR</div>
-        )}
-      </div>
-      <section className="sidebar-pair-section" aria-label={labels.languages}>
-        <h3 className="sidebar-section-title">{labels.languages}</h3>
+      </SidebarSection>
+      <SidebarSection title="LinkedIn QR">
+        <div className="qr-wrap qr-wrap--tight">
+          {!qrLoadError ? (
+            <img src={linkedInQrPath} alt="LinkedIn QR" className="qr-image" onError={onQrError} />
+          ) : (
+            <div className="qr-placeholder">QR</div>
+          )}
+        </div>
+      </SidebarSection>
+      <SidebarSection title={labels.languages}>
         <ul className="cv-sidebar-contact-list">
           {cvData.profile.languages.map((item, idx) => (
-            <SidebarPairListItem
+            <SidebarLeadingLabelItem
               key={item.es}
-              main={
-                <span className="cv-sidebar-pair-main-inline">
-                  <span className="language-flag-badge">
-                    <img
-                      className="language-flag-image"
-                      src={languageFlagPaths[idx] ?? '/flags/gb.svg'}
-                      alt=""
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <span className="cv-sidebar-pair-label">{localize(locale, item)}</span>
+              leading={
+                <span className="language-flag-badge">
+                  <img
+                    className="language-flag-image"
+                    src={languageFlagPaths[idx] ?? '/flags/gb.svg'}
+                    alt=""
+                    aria-hidden="true"
+                  />
                 </span>
               }
+              label={localize(locale, item)}
             />
           ))}
         </ul>
-      </section>
+      </SidebarSection>
       {cvData.profile.skillProfile.length > 0 ? (
-        <SkillProfileHighlights
-          cvData={cvData}
-          locale={locale}
-          title={labels.coreExpertise}
-        />
+        <SkillProfileHighlights cvData={cvData} locale={locale} title={labels.coreExpertise} />
       ) : null}
     </aside>
   )

@@ -5,25 +5,18 @@ import { ExperienceBlock } from '../components/blocks'
 type Props = {
   locale: Locale
   labels: UiLabels
-  allExperiences: CvData['experiences']
   experiences: CvData['experiences']
-  onEditExperience: (globalIndex: number) => void
-  onEditGroupedPosition: (globalIndex: number, positionIndex: number) => void
 }
 
 export function CvMainPage2({
   locale,
   labels,
-  allExperiences,
   experiences,
-  onEditExperience,
-  onEditGroupedPosition,
 }: Props) {
   return (
-    <section className="cv-content">
-      <section>
+    <section className="cv-content cv-content--p2">
+      <section className="experience-list-p2">
         {experiences.map((exp) => {
-          const globalIdx = allExperiences.indexOf(exp)
           const blockKey =
             exp.kind === 'grouped'
               ? `grouped-${exp.company.es}-p2`
@@ -34,12 +27,6 @@ export function CvMainPage2({
               exp={exp}
               locale={locale}
               technologiesLabel={labels.technologies}
-              onEdit={exp.kind === 'single' ? () => onEditExperience(globalIdx) : undefined}
-              onEditGroupedPosition={
-                exp.kind === 'grouped'
-                  ? (positionIndex) => onEditGroupedPosition(globalIdx, positionIndex)
-                  : undefined
-              }
             />
           )
         })}

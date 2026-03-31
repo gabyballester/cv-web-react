@@ -13,6 +13,7 @@ const periodSchema = z.object({
 export const experiencePositionSchema = z.object({
   role: localizedTextSchema,
   project: localizedTextSchema,
+  client: localizedTextSchema.optional(),
   period: periodSchema,
   bullets: z.array(localizedTextSchema),
   technologies: z.array(z.string()),
@@ -23,6 +24,7 @@ const experienceSingleSchema = z.object({
   role: localizedTextSchema,
   company: localizedTextSchema,
   project: localizedTextSchema,
+  client: localizedTextSchema.optional(),
   period: periodSchema,
   location: localizedTextSchema,
   bullets: z.array(localizedTextSchema),
@@ -126,8 +128,6 @@ export type ExperienceSingle = z.infer<typeof experienceSingleSchema>
 export type ExperiencePosition = z.infer<typeof experiencePositionSchema>
 export type Locale = 'es' | 'en'
 
-export function isGroupedExperience(
-  exp: CvData['experiences'][number],
-): exp is ExperienceGrouped {
+export function isGroupedExperience(exp: CvData['experiences'][number]): exp is ExperienceGrouped {
   return exp.kind === 'grouped'
 }

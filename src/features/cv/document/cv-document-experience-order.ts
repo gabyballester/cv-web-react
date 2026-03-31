@@ -8,7 +8,7 @@ function isCleverpySingle(exp: CvData['experiences'][number]): boolean {
   )
 }
 
-/** Página 2: Cleverpy/Idrica siempre el primer bloque al imprimir (mismo orden en `cvData` para el editor). */
+/** Keep Cleverpy as first experience on page 2. */
 export function orderSecondPageExperiencesForPrint(
   slice: CvData['experiences'],
 ): CvData['experiences'] {

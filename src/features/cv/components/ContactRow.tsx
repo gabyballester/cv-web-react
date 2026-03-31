@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { SidebarPairListItem } from './SidebarPairListItem'
+import { SidebarLeadingLabelItem } from './SidebarLeadingLabelItem'
 
 export type ContactIconKind = 'location' | 'phone' | 'mobile' | 'linkedin'
 
@@ -48,6 +48,9 @@ type ContactRowProps = {
 
 export function ContactRow({ icon, children }: ContactRowProps) {
   return (
-    <SidebarPairListItem main={children} trailing={<ContactTrailIcon kind={icon} />} />
+    <SidebarLeadingLabelItem
+      leading={<ContactTrailIcon kind={icon} />}
+      label={children}
+    />
   )
 }

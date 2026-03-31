@@ -23,17 +23,26 @@
     ],
     "skillProfile": [
       {
-        "label": { "es": "JavaScript", "en": "JavaScript" },
+        "label": {
+          "es": "JavaScript",
+          "en": "JavaScript"
+        },
         "tenureKey": "javascriptProduct",
         "icon": "javascript"
       },
       {
-        "label": { "es": "React", "en": "React" },
+        "label": {
+          "es": "React",
+          "en": "React"
+        },
         "tenureKey": "react",
         "icon": "react"
       },
       {
-        "label": { "es": "TypeScript", "en": "TypeScript" },
+        "label": {
+          "es": "TypeScript",
+          "en": "TypeScript"
+        },
         "tenureKey": "typescript",
         "icon": "typescript"
       },
@@ -78,7 +87,10 @@
         "icon": "uiSystems"
       },
       {
-        "label": { "es": "Agile · Scrum", "en": "Agile · Scrum" },
+        "label": {
+          "es": "Agile · Scrum",
+          "en": "Agile · Scrum"
+        },
         "tenureKey": "scrumDelivery",
         "icon": "agile"
       }
@@ -178,8 +190,12 @@
             "en": "Frontend React Software Engineer"
           },
           "project": {
-            "es": "Proyecto: Onboarding – Openbank",
-            "en": "Project: Onboarding – Openbank"
+            "es": "Onboarding",
+            "en": "Onboarding"
+          },
+          "client": {
+            "es": "Openbank",
+            "en": "Openbank"
           },
           "period": {
             "from": "04/2025",
@@ -226,8 +242,12 @@
             "en": "Frontend React Software Engineer"
           },
           "project": {
-            "es": "Proyecto: VidaCaixa (La Caixa)",
-            "en": "Project: VidaCaixa (La Caixa)"
+            "es": "Planes de pensiones",
+            "en": "Pension plans"
+          },
+          "client": {
+            "es": "VidaCaixa",
+            "en": "VidaCaixa"
           },
           "period": {
             "from": "12/2024",
@@ -280,8 +300,12 @@
         "en": "Babel Group"
       },
       "project": {
-        "es": "Proyecto: Banca Digital",
-        "en": "Project: Digital Banking"
+        "es": "Banca Digital",
+        "en": "Digital Banking"
+      },
+      "client": {
+        "es": "Babel Group",
+        "en": "Babel Group"
       },
       "period": {
         "from": "03/2023",
@@ -337,8 +361,8 @@
         "to": "03/2023"
       },
       "location": {
-        "es": "España (Remoto)",
-        "en": "Spain (Remote)"
+        "es": "Valencia (Remoto)",
+        "en": "Valencia (Remote)"
       },
       "bullets": [
         {
@@ -402,7 +426,13 @@
           "en": "Defined and validated API contracts with Postman and Swagger, supported by automated tests with Jest."
         }
       ],
-      "technologies": ["NestJS", "TypeScript", "Postman", "Swagger", "Jest"]
+      "technologies": [
+        "NestJS",
+        "TypeScript",
+        "Postman",
+        "Swagger",
+        "Jest"
+      ]
     },
     {
       "kind": "single",
@@ -415,8 +445,8 @@
         "en": "Veres"
       },
       "project": {
-        "es": "PoC y MVP para instituciones educativas",
-        "en": "PoC and MVP for educational institutions"
+        "es": "MVP para instituciones educativas",
+        "en": "MVP for educational institutions"
       },
       "period": {
         "from": "11/2019",
@@ -436,7 +466,13 @@
           "en": "Developed an admin panel with public/private routes, permission handling, and global state managed with Redux."
         }
       ],
-      "technologies": ["React", "TypeScript", "Redux", "SASS", "ESLint"]
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Redux",
+        "SASS",
+        "ESLint"
+      ]
     },
     {
       "kind": "single",
