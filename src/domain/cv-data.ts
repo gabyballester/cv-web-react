@@ -1,4 +1,4 @@
-import editableCvData from '../content/cv-content.json'
+import { cvContent } from '../content/cv-content'
 import { cvSchema, type CvData } from './cv-schema'
 
 // Fixed UI/runtime settings that are not part of editable CV content.
@@ -8,4 +8,4 @@ export const cvFixedConfig = {
   defaultLocale: 'es',
 } as const
 
-export const initialCvData: CvData = cvSchema.parse(editableCvData)
+export const initialCvData: CvData = cvSchema.parse(cvContent)
