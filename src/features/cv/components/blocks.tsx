@@ -2,6 +2,7 @@ import type { CvData, Locale } from '../../../domain/cv-schema'
 import { isGroupedExperience } from '../../../domain/cv-schema'
 import { groupedCompanyPeriodBounds } from '../../../shared/date-utils'
 import { localize, stableText } from '../../../shared/locale-utils'
+import { t } from '../../../shared/ui-labels'
 import {
   ExperienceBulletList,
   ExperienceCompanyLocationRow,
@@ -32,10 +33,11 @@ function SingleExperienceBody({
   technologiesLabel: string
   compact: boolean
 }) {
+  const labels = t(locale)
   const projectText = localize(locale, exp.project).trim()
   const clientText = exp.client ? stableText(exp.client) : ''
-  const projectLabel = locale === 'es' ? 'Proyecto' : 'Project'
-  const clientLabel = locale === 'es' ? 'Cliente' : 'Client'
+  const projectLabel = labels.project
+  const clientLabel = labels.client
   const hasNoDetailLines = exp.bullets.length === 0 && exp.technologies.length === 0
   const hideProjectLine = isTasksPlaceholder(projectText) && exp.bullets.length > 0
   const showProjectLabel = !hasNoDetailLines
@@ -81,6 +83,7 @@ export function ExperienceBlock({
   locale: Locale
   technologiesLabel: string
 }) {
+  const labels = t(locale)
   if (isGroupedExperience(exp)) {
     const head = exp.positions[0]
     const companySpan = groupedCompanyPeriodBounds(exp.positions)
@@ -96,16 +99,14 @@ export function ExperienceBlock({
         />
         <div
           className="experience-group-timeline"
-          aria-label={
-            locale === 'es' ? 'Proyectos en la misma empresa' : 'Projects at the same company'
-          }
+          aria-label={labels.projectsAtCompany}
         >
           {exp.positions.map((pos) => {
             const rowCompact = isCompactRole(pos.bullets, pos.technologies)
             const projectText = localize(locale, pos.project).trim()
             const clientText = pos.client ? stableText(pos.client) : ''
-            const projectLabel = locale === 'es' ? 'Proyecto' : 'Project'
-            const clientLabel = locale === 'es' ? 'Cliente' : 'Client'
+            const projectLabel = labels.project
+            const clientLabel = labels.client
             return (
               <div
                 className={`experience-group-row${rowCompact ? ' experience-group-row--compact' : ''}`}
