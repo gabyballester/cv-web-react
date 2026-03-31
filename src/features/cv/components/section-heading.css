@@ -25,7 +25,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  margin-bottom: 0.72rem;
+  margin-bottom: var(--content-title-row-gap);
 }
 
 .cv-section-header > .cv-section-title {

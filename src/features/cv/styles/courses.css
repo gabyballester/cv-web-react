@@ -12,7 +12,7 @@
 }
 
 .course-category {
-  margin-bottom: 0.8rem;
+  margin-bottom: var(--courses-category-gap);
 }
 
 .cv-section-title--category,
@@ -25,7 +25,7 @@
 }
 
 .cv-sidebar .course-category {
-  margin-bottom: 1.22rem;
+  margin-bottom: var(--courses-category-gap-sidebar);
 }
 
 .cv-sidebar .cv-section-title--category,
@@ -39,7 +39,7 @@
 }
 
 .cv-sidebar .course-category .course-item-wrap:not(:last-child) {
-  margin-bottom: 0.78rem;
+  margin-bottom: var(--courses-item-gap-sidebar);
 }
 
 .cv-sidebar .course-category .course-item-wrap:last-child {
@@ -51,7 +51,7 @@
 }
 
 .course-item-wrap {
-  margin-bottom: 0.64rem;
+  margin-bottom: var(--courses-item-gap);
   text-align: left;
   position: relative;
   padding-left: 0.62rem;
@@ -82,8 +82,8 @@
   align-items: flex-start;
   gap: 0.12rem;
   margin: 0;
-  font-size: 0.68rem;
-  line-height: 1.28;
+  font-size: var(--courses-meta-font-size);
+  line-height: var(--courses-meta-line-height);
   color: var(--muted-strong);
   font-style: italic;
 }

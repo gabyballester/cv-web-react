@@ -6,8 +6,8 @@
 }
 
 .cv-sidebar .sidebar-summary .quote {
-  font-size: 0.72rem;
-  line-height: 1.42;
+  font-size: var(--sidebar-summary-font-size);
+  line-height: var(--sidebar-summary-line-height);
   margin: 0.24rem 0 0.3rem;
 }
 
@@ -21,13 +21,13 @@
 
 .cv-sidebar .sidebar-summary .quote-summary-line {
   font-style: italic;
-  font-size: 0.7rem;
-  line-height: 1.28;
+  font-size: var(--sidebar-summary-compact-font-size);
+  line-height: var(--sidebar-summary-compact-line-height);
   margin: 0.1rem 0 0.12rem;
 }
 
 .sidebar-pair-section {
-  margin: 0 0 1rem;
+  margin: 0 0 var(--sidebar-section-gap);
   break-inside: avoid;
   page-break-inside: avoid;
 }
@@ -38,7 +38,7 @@
 
 .sidebar-pair-section > .cv-section-header {
   margin-top: 0;
-  margin-bottom: .8rem;
+  margin-bottom: var(--sidebar-section-title-gap);
 }
 
 .sidebar-pair-section .cv-sidebar-contact-list {
@@ -46,20 +46,20 @@
 }
 
 .sidebar-pair-section .cv-sidebar-contact-item .cv-sidebar-pair-row {
-  gap: 0.38rem;
+  gap: var(--sidebar-row-gap);
   align-items: center;
 }
 
 .sidebar-pair-section .cv-sidebar-contact-item .cv-sidebar-pair-row__main {
-  line-height: 1.28;
+  line-height: var(--sidebar-row-line-height);
 }
 
 .cv-sidebar-pair-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 0.38rem;
-  line-height: 1.28;
+  gap: var(--sidebar-row-gap);
+  line-height: var(--sidebar-row-line-height);
 }
 
 .cv-sidebar-pair-row--single {
@@ -68,7 +68,7 @@
 
 .cv-sidebar-pair-row__main {
   min-width: 0;
-  font-size: 0.74rem;
+  font-size: var(--sidebar-row-font-size);
   color: var(--text-strong);
 }
 
@@ -83,7 +83,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  font-size: 0.74rem;
+  font-size: var(--sidebar-row-font-size);
   text-align: left;
   max-width: 100%;
 }
@@ -104,7 +104,7 @@
 .cv-sidebar-pair-main-inline {
   display: inline-flex;
   align-items: center;
-  gap: 0.38rem;
+  gap: var(--sidebar-row-gap);
   min-width: 0;
   max-width: 100%;
 }
@@ -130,19 +130,19 @@
 }
 
 .cv-sidebar-pair-label {
-  font-size: 0.74rem;
+  font-size: var(--sidebar-row-font-size);
   font-weight: 400;
   color: var(--text-strong);
-  line-height: 1.28;
+  line-height: var(--sidebar-row-line-height);
   min-width: 0;
 }
 
 .cv-sidebar-pair-trail-text {
-  font-size: 0.74rem;
+  font-size: var(--sidebar-row-font-size);
   font-weight: 400;
   color: var(--muted-strong);
   white-space: nowrap;
-  line-height: 1.28;
+  line-height: var(--sidebar-row-line-height);
 }
 
 .contact-icon {

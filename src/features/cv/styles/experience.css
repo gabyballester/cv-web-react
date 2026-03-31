@@ -60,7 +60,7 @@
 
 .education-item .education-head span {
   font-style: italic;
-  font-size: 0.72rem;
+  font-size: var(--content-meta-font-size);
   color: var(--muted-strong);
 }
 
@@ -83,7 +83,7 @@
   margin: 0.12rem 0 0;
   font-style: normal;
   font-weight: 400;
-  font-size: 0.72rem;
+  font-size: var(--content-meta-font-size);
   letter-spacing: normal;
   color: var(--text-strong);
   line-height: 1.38;
@@ -116,7 +116,7 @@
   letter-spacing: normal;
   color: var(--text-strong);
   white-space: pre-line;
-  font-size: 0.72rem;
+  font-size: var(--content-meta-font-size);
 }
 
 .experience-location--trail {
@@ -176,8 +176,8 @@
 
 .experience-project-client {
   margin: var(--experience-stack-gap) 0 0;
-  font-size: 0.72rem;
-  line-height: 1.18;
+  font-size: var(--content-meta-font-size);
+  line-height: var(--content-meta-line-height);
   color: var(--muted-strong);
   text-transform: none;
   letter-spacing: normal;
@@ -201,7 +201,7 @@
 .cv-content .item p,
 .cv-content .item li,
 .cv-content .item .item-head span {
-  line-height: 1.44;
+  line-height: var(--content-body-line-height);
 }
 
 .cv-content .experience-group-header--tight .item-head strong,
@@ -223,7 +223,7 @@
 }
 
 .experience-item .meta {
-  margin: 0.06rem 0 0;
+  margin: var(--content-meta-margin-top) 0 0;
 }
 
 .experience-item ul {

@@ -36,6 +36,29 @@
   --section-title-letter-spacing: 0.03rem;
   --section-title-margin-top: 0.82rem;
   --section-title-margin-bottom: 0.28rem;
+  /* Area tokens: content */
+  --content-title-row-gap: 0.72rem;
+  --content-meta-font-size: 0.72rem;
+  --content-meta-line-height: 1.18;
+  --content-meta-margin-top: 0.06rem;
+  --content-body-line-height: 1.44;
+  /* Area tokens: sidebar */
+  --sidebar-section-gap: 1rem;
+  --sidebar-section-title-gap: 0.8rem;
+  --sidebar-row-gap: 0.38rem;
+  --sidebar-row-line-height: 1.28;
+  --sidebar-row-font-size: 0.74rem;
+  --sidebar-summary-font-size: 0.72rem;
+  --sidebar-summary-line-height: 1.42;
+  --sidebar-summary-compact-font-size: 0.7rem;
+  --sidebar-summary-compact-line-height: 1.28;
+  /* Area tokens: courses */
+  --courses-category-gap: 0.8rem;
+  --courses-category-gap-sidebar: 1.22rem;
+  --courses-item-gap: 0.64rem;
+  --courses-item-gap-sidebar: 0.78rem;
+  --courses-meta-font-size: 0.68rem;
+  --courses-meta-line-height: 1.28;
   --experience-stack-gap: 0.08rem;
   --experience-entry-gap: 0.92rem;
   --experience-entry-compact-gap: 0.92rem;
