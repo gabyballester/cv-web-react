@@ -35,7 +35,10 @@ export function CvDocument(props: CvDocumentActions) {
 
   return (
     <section className="paper-stack" ref={printRef}>
-      <CvA4Shell pageLabel="1/2">
+      <CvA4Shell
+        pageLabel="1/2"
+        pageAriaLabel={locale === 'es' ? 'CV página 1 de 2' : 'CV page 1 of 2'}
+      >
         <CvSidebarPage1
           cvData={cvData}
           locale={locale}
@@ -55,7 +58,10 @@ export function CvDocument(props: CvDocumentActions) {
         />
       </CvA4Shell>
 
-      <CvA4Shell pageLabel="2/2">
+      <CvA4Shell
+        pageLabel="2/2"
+        pageAriaLabel={locale === 'es' ? 'CV página 2 de 2' : 'CV page 2 of 2'}
+      >
         <CvSidebarPage2
           locale={locale}
           labels={labels}

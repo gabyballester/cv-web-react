@@ -1,5 +1,5 @@
 .item {
-  margin-bottom: 0.78rem;
+  margin-bottom: var(--content-item-gap);
   break-inside: avoid;
   page-break-inside: avoid;
 }
@@ -49,7 +49,7 @@
 
 .education-item {
   position: relative;
-  margin-bottom: 0.55rem;
+  margin-bottom: var(--content-education-item-gap);
 }
 
 .education-item .education-head {
@@ -86,7 +86,7 @@
   font-size: var(--content-meta-font-size);
   letter-spacing: normal;
   color: var(--text-strong);
-  line-height: 1.38;
+  line-height: var(--content-company-line-height);
 }
 
 .experience-location {
@@ -95,17 +95,17 @@
   font-style: italic;
   font-weight: 400;
   color: var(--muted-strong);
-  line-height: 1.35;
+  line-height: var(--content-location-line-height);
 }
 
 .experience-company-location-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 0.45rem;
+  gap: var(--content-company-row-gap);
   margin: 0.12rem 0 0;
   font-size: 0.76rem;
-  line-height: 1.38;
+  line-height: var(--content-company-line-height);
 }
 
 .experience-company--lead {
@@ -126,7 +126,7 @@
   color: var(--muted-strong);
   font-size: 0.74rem;
   text-align: right;
-  line-height: 1.35;
+  line-height: var(--content-location-line-height);
 }
 
 .experience-group-header--tight,
@@ -138,7 +138,7 @@
 }
 
 .experience-group-header--tight {
-  margin-bottom: 1rem;
+  margin-bottom: var(--content-group-header-gap);
 }
 
 .experience-group-header--tight .item-head,
@@ -171,7 +171,7 @@
 
 .experience-project-line {
   margin: 0.02rem 0 0;
-  line-height: 1.24;
+  line-height: var(--content-project-line-height);
 }
 
 .experience-project-client {
@@ -227,17 +227,17 @@
 }
 
 .experience-item ul {
-  margin: 0.14rem 0 0.08rem;
+  margin: 0.14rem 0 var(--content-list-bottom-margin);
   padding-left: 1rem;
 }
 
 .cv-content .experience-item ul {
-  margin: 0.12rem 0 0.08rem;
+  margin: var(--content-list-top-margin) 0 var(--content-list-bottom-margin);
   line-height: 1.32;
 }
 
 .experience-item li {
-  margin: 0 0 0.04rem;
+  margin: 0 0 var(--content-list-item-gap);
 }
 
 .experience-item li:last-child {

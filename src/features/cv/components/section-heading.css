@@ -6,7 +6,7 @@
 }
 
 .cv-section-title--main,
-h2 {
+.cv-section-title--sidebar {
   margin: var(--section-title-margin-top) 0 var(--section-title-margin-bottom);
   padding: 0 0 0.12rem;
   text-transform: uppercase;

@@ -42,6 +42,16 @@
   --content-meta-line-height: 1.18;
   --content-meta-margin-top: 0.06rem;
   --content-body-line-height: 1.44;
+  --content-item-gap: 0.78rem;
+  --content-education-item-gap: 0.55rem;
+  --content-company-line-height: 1.38;
+  --content-location-line-height: 1.35;
+  --content-company-row-gap: 0.45rem;
+  --content-group-header-gap: 1rem;
+  --content-project-line-height: 1.24;
+  --content-list-top-margin: 0.12rem;
+  --content-list-bottom-margin: 0.08rem;
+  --content-list-item-gap: 0.04rem;
   /* Area tokens: sidebar */
   --sidebar-section-gap: 1rem;
   --sidebar-section-title-gap: 0.8rem;
