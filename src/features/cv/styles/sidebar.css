@@ -8,22 +8,22 @@
 .cv-sidebar .sidebar-summary .quote {
   font-size: var(--sidebar-summary-font-size);
   line-height: var(--sidebar-summary-line-height);
-  margin: 0.24rem 0 0.3rem;
+  margin: var(--sidebar-summary-margin-top) 0 var(--sidebar-summary-margin-bottom);
 }
 
 .cv-sidebar .sidebar-summary .quote:first-of-type {
-  margin-top: 0.22rem;
+  margin-top: var(--sidebar-summary-first-margin-top);
 }
 
 .cv-sidebar .sidebar-summary .quote:last-of-type {
-  margin-bottom: 0.32rem;
+  margin-bottom: var(--sidebar-summary-last-margin-bottom);
 }
 
 .cv-sidebar .sidebar-summary .quote-summary-line {
   font-style: italic;
   font-size: var(--sidebar-summary-compact-font-size);
   line-height: var(--sidebar-summary-compact-line-height);
-  margin: 0.1rem 0 0.12rem;
+  margin: var(--sidebar-summary-line-margin-top) 0 var(--sidebar-summary-line-margin-bottom);
 }
 
 .sidebar-pair-section {
@@ -42,7 +42,7 @@
 }
 
 .sidebar-pair-section .cv-sidebar-contact-list {
-  margin: 0.22rem 0 0.62rem;
+  margin: var(--sidebar-contact-list-margin-top) 0 var(--sidebar-contact-list-margin-bottom);
 }
 
 .sidebar-pair-section .cv-sidebar-contact-item .cv-sidebar-pair-row {
@@ -89,7 +89,7 @@
 }
 
 .cv-sidebar-contact-item {
-  margin: 0 0 0.16rem;
+  margin: 0 0 var(--sidebar-item-gap);
   padding: 0;
 }
 

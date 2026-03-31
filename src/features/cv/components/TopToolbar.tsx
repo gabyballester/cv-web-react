@@ -1,5 +1,6 @@
 import type { Locale } from '../../../domain/cv-schema'
 import { t } from '../../../shared/ui-labels'
+import './top-toolbar.css'
 
 type Props = {
   locale: Locale
@@ -17,13 +18,16 @@ export function TopToolbar({
   pdfExporting,
 }: Props) {
   const labels = t(locale)
+  const esClasses = ['toolbar-btn', locale === 'es' ? 'toolbar-btn--active' : ''].filter(Boolean).join(' ')
+  const enClasses = ['toolbar-btn', locale === 'en' ? 'toolbar-btn--active' : ''].filter(Boolean).join(' ')
+
   return (
     <header className="toolbar no-print">
       <div className="toolbar-left">
         <button
           type="button"
           onClick={() => onLocaleChange('es')}
-          className={locale === 'es' ? 'active' : ''}
+          className={esClasses}
           aria-pressed={locale === 'es'}
           aria-label={labels.changeLanguageToSpanish}
         >
@@ -32,7 +36,7 @@ export function TopToolbar({
         <button
           type="button"
           onClick={() => onLocaleChange('en')}
-          className={locale === 'en' ? 'active' : ''}
+          className={enClasses}
           aria-pressed={locale === 'en'}
           aria-label={labels.changeLanguageToEnglish}
         >
@@ -40,11 +44,17 @@ export function TopToolbar({
         </button>
       </div>
       <div className="toolbar-right">
-        <button type="button" onClick={onPrintVectorPdf} disabled={pdfExporting}>
+        <button
+          type="button"
+          className="toolbar-btn toolbar-btn--primary"
+          onClick={onPrintVectorPdf}
+          disabled={pdfExporting}
+        >
           {labels.printPdfVector}
         </button>
         <button
           type="button"
+          className="toolbar-btn"
           onClick={() => void onDownloadPdf()}
           disabled={pdfExporting}
           aria-busy={pdfExporting}

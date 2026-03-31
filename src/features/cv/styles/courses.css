@@ -17,7 +17,7 @@
 
 .cv-section-title--category,
 .course-category-title {
-  margin: 0.48rem 0 0.34rem;
+  margin: var(--courses-title-margin-top) 0 var(--courses-title-margin-bottom);
   font-size: 0.81rem;
   font-weight: 400;
   text-decoration: underline;
@@ -30,12 +30,12 @@
 
 .cv-sidebar .cv-section-title--category,
 .cv-sidebar .course-category-title {
-  margin: 0.58rem 0 0.46rem;
+  margin: var(--courses-title-sidebar-margin-top) 0 var(--courses-title-sidebar-margin-bottom);
 }
 
 .cv-sidebar .course-category:first-child .cv-section-title--category,
 .cv-sidebar .course-category:first-child .course-category-title {
-  margin-top: 0.35rem;
+  margin-top: var(--courses-title-first-margin-top);
 }
 
 .cv-sidebar .course-category .course-item-wrap:not(:last-child) {
@@ -43,7 +43,7 @@
 }
 
 .cv-sidebar .course-category .course-item-wrap:last-child {
-  margin-bottom: 0.12rem;
+  margin-bottom: var(--courses-item-last-gap);
 }
 
 .cv-sidebar .course-item-title {

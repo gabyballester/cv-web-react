@@ -18,8 +18,17 @@ function isCompactRole(bullets: { es: string; en: string }[], technologies: stri
 }
 
 function isTasksPlaceholder(projectText: string) {
-  const normalized = projectText.trim().toLowerCase()
-  return normalized === 'funciones / tareas:' || normalized === 'functions / tasks:'
+  const normalized = projectText
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .replace(/\s*\/\s*/g, '/')
+  return (
+    normalized === 'funciones/tareas:' ||
+    normalized === 'funciones / tareas:' ||
+    normalized === 'functions/tasks:' ||
+    normalized === 'functions / tasks:'
+  )
 }
 
 function SingleExperienceBody({

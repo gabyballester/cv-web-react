@@ -8,7 +8,7 @@ const ROLE_FRONTEND_REACT_SOFTWARE_ENGINEER = l(
   'Frontend React Software Engineer',
 )
 const LOCATION_VALENCIA_REMOTE = l('Valencia (Remoto)', 'Valencia (Remote)')
-const LOCATION_MANCHESTER_UK = l('Manchester, Reino Unido', 'Manchester, UK')
+const LOCATION_MANCHESTER_UK = l('Manchester, UK', 'Manchester, UK')
 
 const emptyBullets = (): LocalizedText[] => []
 const emptyTechnologies = (): string[] => []
@@ -227,14 +227,20 @@ export const cvExperiences = [
   },
   {
     kind: "single",
-    role: l("Técnico informático - Propietario de Franquicia", "IT Technician (Freelance)"),
+    role: l("Técnico informático autónomo (franquicia)", "Freelance IT Technician (franchise owner)"),
     company: l("APP INFORMÁTICA", "APP INFORMÁTICA"),
-    project: l("Funciones / tareas:", "Functions/tasks:"),
+    project: l("", ""),
     period: period("05/2004", "10/2011"),
     location: l("Sagunto (Valencia)", "Sagunto (Valencia)"),
     bullets: [
-      l("Montaje, reparación de equipos, reparación, copias de seguridad y restauración.", "Assembly, equipment repair, repair, backup and restoration."),
-      l("Elaboración de presupuestos a medida y ventas.", "Preparation of custom budgets, quotations and sales.")
+      l(
+        "Montaje y reparación de equipos, copias de seguridad y restauración de sistemas.",
+        "Hardware assembly and repair, backup management, and system recovery.",
+      ),
+      l(
+        "Elaboración de presupuestos a medida y gestión de ventas.",
+        "Preparation of tailored quotations and sales management.",
+      )
     ],
     technologies: []
   }
