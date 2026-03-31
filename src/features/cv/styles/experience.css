@@ -129,14 +129,7 @@
   line-height: 1.35;
 }
 
-.experience-group-header--tight {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0;
-  margin-bottom: 1rem;
-}
-
+.experience-group-header--tight,
 .experience-entry-head--tight {
   display: flex;
   flex-direction: column;
@@ -144,44 +137,32 @@
   gap: 0;
 }
 
-.experience-group-header--tight .item-head {
-  margin-bottom: 0;
-  line-height: 1;
+.experience-group-header--tight {
+  margin-bottom: 1rem;
 }
 
-.experience-group-header--tight .item-head strong,
-.experience-group-header--tight .item-head span {
-  line-height: 1.08;
-}
-
-.experience-group-header--tight .experience-company-location-row {
-  margin: 0;
-  margin-top: var(--experience-stack-gap);
-  line-height: 1.15;
-}
-
-.experience-group-header--tight .experience-company--lead,
-.experience-group-header--tight .experience-location--trail {
-  margin: 0;
-  line-height: 1.16;
-}
-
+.experience-group-header--tight .item-head,
 .experience-entry-head--tight .item-head {
   margin-bottom: 0;
   line-height: 1;
 }
 
+.experience-group-header--tight .item-head strong,
+.experience-group-header--tight .item-head span,
 .experience-entry-head--tight .item-head strong,
 .experience-entry-head--tight .item-head span {
   line-height: 1.08;
 }
 
+.experience-group-header--tight .experience-company-location-row,
 .experience-entry-head--tight .experience-company-location-row {
   margin: 0;
   margin-top: var(--experience-stack-gap);
   line-height: 1.15;
 }
 
+.experience-group-header--tight .experience-company--lead,
+.experience-group-header--tight .experience-location--trail,
 .experience-entry-head--tight .experience-company--lead,
 .experience-entry-head--tight .experience-location--trail {
   margin: 0;
