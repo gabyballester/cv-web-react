@@ -226,6 +226,10 @@
   margin: var(--content-meta-margin-top) 0 0;
 }
 
+.experience-item .experience-technologies-line {
+  margin-top: var(--content-technologies-margin-top);
+}
+
 .experience-item ul {
   margin: 0.14rem 0 var(--content-list-bottom-margin);
   padding-left: 1rem;

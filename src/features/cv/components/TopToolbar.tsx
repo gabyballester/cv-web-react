@@ -46,7 +46,7 @@ export function TopToolbar({
       <div className="toolbar-right">
         <button
           type="button"
-          className="toolbar-btn toolbar-btn--primary"
+          className="toolbar-btn"
           onClick={onPrintVectorPdf}
           disabled={pdfExporting}
         >
@@ -54,7 +54,7 @@ export function TopToolbar({
         </button>
         <button
           type="button"
-          className="toolbar-btn"
+          className="toolbar-btn toolbar-btn--primary"
           onClick={() => void onDownloadPdf()}
           disabled={pdfExporting}
           aria-busy={pdfExporting}

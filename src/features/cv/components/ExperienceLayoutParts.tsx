@@ -107,7 +107,7 @@ type TechProps = {
 export function ExperienceTechnologiesLine({ technologiesLabel, technologies }: TechProps) {
   if (technologies.length === 0) return null
   return (
-    <p className="meta">
+    <p className="meta experience-technologies-line">
       {technologiesLabel}: {technologies.join(' | ')}
     </p>
   )
