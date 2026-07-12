@@ -6,12 +6,13 @@ import { ContactRow } from '../components/ContactRow'
 import { CvTitledSection } from '../components/CvTitledSection'
 import { localize } from '../../../shared/locale-utils'
 import { ProfilePhotoCard } from './ProfilePhotoCard'
+import { publicAsset } from '../../../shared/public-asset'
 
 const languageFlagPaths = [
-  '/flags/gb.svg',
-  '/flags/es-valencia.svg',
-  '/flags/fr.svg',
-  '/flags/de.svg',
+  publicAsset('flags/gb.svg'),
+  publicAsset('flags/es-valencia.svg'),
+  publicAsset('flags/fr.svg'),
+  publicAsset('flags/de.svg'),
 ]
 
 type Props = {
@@ -100,7 +101,7 @@ export function CvSidebarPage1({
                 <span className="language-flag-badge">
                   <img
                     className="language-flag-image"
-                    src={languageFlagPaths[idx] ?? '/flags/gb.svg'}
+                    src={languageFlagPaths[idx] ?? publicAsset('flags/gb.svg')}
                     alt=""
                     aria-hidden="true"
                   />
