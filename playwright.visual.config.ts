@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test'
+import { defineConfig } from '@playwright/test'
 
 const useBundledChromium = process.env.PW_BUNDLED_CHROMIUM === '1'
 
@@ -18,7 +18,6 @@ export default defineConfig({
     timezoneId: 'Europe/Madrid',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    ...devices['Desktop Chrome'],
     ...(useBundledChromium ? {} : { channel: 'chrome' }),
   },
   webServer: {
