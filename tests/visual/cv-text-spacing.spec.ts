@@ -1,11 +1,8 @@
 import { expect, test } from '@playwright/test'
+import { gotoCvReady } from './helpers'
 
 test('WCAG text spacing override keeps content usable', async ({ page }) => {
-  await page.goto('/')
-  await page.waitForLoadState('networkidle')
-  await page.evaluate(async () => {
-    await document.fonts.ready
-  })
+  await gotoCvReady(page)
 
   // Simulate user text-spacing overrides from WCAG 1.4.12.
   await page.addStyleTag({

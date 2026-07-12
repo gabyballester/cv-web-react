@@ -1,11 +1,8 @@
 import { expect, test } from '@playwright/test'
+import { gotoCvReady } from './helpers'
 
 test('visual regression for both A4 CV pages', async ({ page }) => {
-  await page.goto('/')
-  await page.waitForLoadState('networkidle')
-  await page.evaluate(async () => {
-    await document.fonts.ready
-  })
+  await gotoCvReady(page)
 
   const cvPages = page.locator('.a4-page')
   await expect(cvPages).toHaveCount(2)

@@ -1,11 +1,8 @@
 import { expect, test } from '@playwright/test'
+import { gotoCvReady } from './helpers'
 
 test('photo card keeps stable layout between ES and EN', async ({ page }) => {
-  await page.goto('/')
-  await page.waitForLoadState('networkidle')
-  await page.evaluate(async () => {
-    await document.fonts.ready
-  })
+  await gotoCvReady(page)
 
   const card = page.locator('.sidebar-cv-photo-card').first()
   await expect(card).toBeVisible()

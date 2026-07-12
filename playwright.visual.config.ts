@@ -1,7 +1,11 @@
-import { defineConfig } from '@playwright/test'
+import { defineConfig, devices } from '@playwright/test'
+
+const useBundledChromium = process.env.PW_BUNDLED_CHROMIUM === '1'
 
 export default defineConfig({
   testDir: './tests/visual',
+  timeout: 60_000,
+  fullyParallel: true,
   reporter: [
     ['list'],
     ['html', { open: 'never', outputFolder: 'playwright-report/visual' }],
@@ -14,11 +18,13 @@ export default defineConfig({
     timezoneId: 'Europe/Madrid',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
+    ...devices['Desktop Chrome'],
+    ...(useBundledChromium ? {} : { channel: 'chrome' }),
   },
   webServer: {
-    command: 'pnpm run build && pnpm run preview -- --host 127.0.0.1 --port 4173 --strictPort',
+    command: 'pnpm exec vite preview --host 127.0.0.1 --port 4173 --strictPort',
     url: 'http://127.0.0.1:4173',
-    reuseExistingServer: true,
-    timeout: 180_000,
+    reuseExistingServer: !process.env.CI,
+    timeout: 60_000,
   },
 })
