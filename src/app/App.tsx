@@ -12,7 +12,7 @@ import '../features/cv/styles/experience.css'
 function App() {
   const locale = useCvStore((s) => s.locale)
   const setLocale = useCvStore((s) => s.setLocale)
-  const profileName = useCvStore((s) => s.cvData.profile.name)
+  const cvOwnerName = useCvStore((s) => s.cvData.header.name)
   const [photoLoadError, setPhotoLoadError] = useState(false)
   const [qrLoadError, setQrLoadError] = useState(false)
   const printRef = useRef<HTMLDivElement>(null)
@@ -22,8 +22,8 @@ function App() {
 
   useEffect(() => {
     document.documentElement.lang = locale
-    document.title = `${labels.profile} | ${profileName}`
-  }, [labels.profile, locale, profileName])
+    document.title = `${labels.documentTitle} | ${cvOwnerName}`
+  }, [labels.documentTitle, locale, cvOwnerName])
 
   const handleDownloadPdf = useCallback(async () => {
     if (!printRef.current || pdfBusyRef.current) return
@@ -55,7 +55,7 @@ function App() {
       <main className="layout">
         <CvDocument
           printRef={printRef}
-          photoSrc={cvFixedConfig.profilePhotoPath}
+          photoSrc={cvFixedConfig.photoPath}
           linkedInQrPath={cvFixedConfig.linkedInQrPath}
           photoLoadError={photoLoadError}
           qrLoadError={qrLoadError}

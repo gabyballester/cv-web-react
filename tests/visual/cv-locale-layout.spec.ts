@@ -7,7 +7,7 @@ test('photo card keeps stable layout between ES and EN', async ({ page }) => {
     await document.fonts.ready
   })
 
-  const card = page.locator('.sidebar-profile-card').first()
+  const card = page.locator('.sidebar-cv-photo-card').first()
   await expect(card).toBeVisible()
   const esBox = await card.boundingBox()
   expect(esBox).not.toBeNull()

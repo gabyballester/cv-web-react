@@ -1,11 +1,11 @@
 import type { CvData, Locale } from '../../../domain/cv-schema'
 import type { UiLabels } from './cv-document-types'
-import { SkillProfileHighlights } from '../components/SkillProfileHighlights'
+import { SkillHighlights } from '../components/SkillHighlights'
 import { SidebarLeadingLabelItem } from '../components/SidebarLeadingLabelItem'
 import { ContactRow } from '../components/ContactRow'
 import { CvTitledSection } from '../components/CvTitledSection'
 import { localize } from '../../../shared/locale-utils'
-import { ProfilePhotoCard } from './ProfilePhotoCard'
+import { CvPhotoCard } from './CvPhotoCard'
 import { publicAsset } from '../../../shared/public-asset'
 
 const languageFlagPaths = [
@@ -40,14 +40,14 @@ export function CvSidebarPage1({
 }: Props) {
   return (
     <aside className="cv-sidebar cv-sidebar--p1" aria-label={`${labels.sidebarContent} 1`}>
-      <ProfilePhotoCard
+      <CvPhotoCard
         photoSrc={photoSrc}
-        photoAlt={cvData.profile.name}
+        photoAlt={cvData.header.name}
         photoLoadError={photoLoadError}
         onPhotoError={onPhotoError}
       />
       <CvTitledSection title={labels.professionalSummary} className="sidebar-summary">
-        {cvData.profile.quotes.map((q) => (
+        {cvData.header.quotes.map((q) => (
           <p key={q.es} className="quote quote-summary-line">
             {localize(locale, q)}
           </p>
@@ -56,29 +56,29 @@ export function CvSidebarPage1({
       <CvTitledSection title={labels.contactData}>
         <ul className="cv-sidebar-contact-list">
           <ContactRow icon="location">
-            <span>{cvData.profile.city}</span>
+            <span>{cvData.header.city}</span>
           </ContactRow>
           <ContactRow icon="phone">
-            <span>Tlf: {cvData.profile.phone}</span>
+            <span>Tlf: {cvData.header.phone}</span>
           </ContactRow>
           <ContactRow icon="mobile">
             <a
-              href={`mailto:${cvData.profile.email}`}
+              href={`mailto:${cvData.header.email}`}
               className="contact-link"
-              aria-label={`${labels.sendEmailTo} ${cvData.profile.email}`}
+              aria-label={`${labels.sendEmailTo} ${cvData.header.email}`}
             >
-              {cvData.profile.email}
+              {cvData.header.email}
             </a>
           </ContactRow>
           <ContactRow icon="linkedin">
             <a
-              href={`https://${cvData.profile.linkedin}`}
+              href={`https://${cvData.header.linkedin}`}
               className="contact-link"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${labels.openLinkedInProfile}: ${cvData.profile.linkedin}`}
+              aria-label={`${labels.openLinkedIn}: ${cvData.header.linkedin}`}
             >
-              {cvData.profile.linkedin}
+              {cvData.header.linkedin}
             </a>
           </ContactRow>
         </ul>
@@ -94,7 +94,7 @@ export function CvSidebarPage1({
       </CvTitledSection>
       <CvTitledSection title={labels.languages}>
         <ul className="cv-sidebar-contact-list">
-          {cvData.profile.languages.map((item, idx) => (
+          {cvData.header.languages.map((item, idx) => (
             <SidebarLeadingLabelItem
               key={item.es}
               leading={
@@ -112,8 +112,8 @@ export function CvSidebarPage1({
           ))}
         </ul>
       </CvTitledSection>
-      {cvData.profile.skillProfile.length > 0 ? (
-        <SkillProfileHighlights cvData={cvData} locale={locale} title={labels.coreExpertise} />
+      {cvData.header.skillHighlights.length > 0 ? (
+        <SkillHighlights cvData={cvData} locale={locale} title={labels.coreExpertise} />
       ) : null}
     </aside>
   )

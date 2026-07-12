@@ -21,8 +21,8 @@ export function CvMainPage1({
     <section className="cv-content" aria-label={`${labels.mainContent} 1`}>
       <header className="hero">
         <div className="hero-banner" />
-        <h1>{cvData.profile.name}</h1>
-        <p className="role-tag">{cvData.profile.roleTag}</p>
+        <h1>{cvData.header.name}</h1>
+        <p className="role-tag">{cvData.header.roleTag}</p>
       </header>
       <section className="education-section">
         <CvSectionHeading title={labels.education} />

@@ -1,4 +1,4 @@
-.sidebar-profile-card {
+.sidebar-cv-photo-card {
   margin: 0 0 1.5rem;
   border: 1px solid var(--border-strong);
   border-radius: 10px;
@@ -36,7 +36,7 @@
   max-height: var(--sidebar-photo-wrap-height);
 }
 
-.profile-photo {
+.cv-photo {
   width: 104px;
   height: 104px;
   border-radius: 999px;

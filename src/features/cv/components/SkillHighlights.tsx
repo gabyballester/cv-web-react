@@ -1,10 +1,10 @@
-import type { CvData, Locale, SkillProfileEntry } from '../../../domain/cv-schema'
+import type { CvData, Locale, SkillHighlightEntry } from '../../../domain/cv-schema'
 import { computeTenureYears, formatTenureYearsWhole } from '../../../shared/skill-tenure'
 import { localize } from '../../../shared/locale-utils'
 import { SidebarPairListItem } from './SidebarPairListItem'
 import { CvTitledSection } from './CvTitledSection'
 
-function SkillIcon({ id, accent }: { id: SkillProfileEntry['icon']; accent: string }) {
+function SkillIcon({ id, accent }: { id: SkillHighlightEntry['icon']; accent: string }) {
   const common = {
     viewBox: '0 0 24 24' as const,
     'aria-hidden': true as const,
@@ -131,7 +131,7 @@ function SkillIcon({ id, accent }: { id: SkillProfileEntry['icon']; accent: stri
   }
 }
 
-const ACCENTS: Record<SkillProfileEntry['icon'], string> = {
+const ACCENTS: Record<SkillHighlightEntry['icon'], string> = {
   javascript: '#ca8a04',
   react: '#61dafb',
   typescript: '#3178c6',
@@ -150,8 +150,8 @@ type Props = {
 }
 
 /** Same list + `SidebarPairListItem` pattern as contact (main left, trail right). */
-export function SkillProfileHighlights({ cvData, locale, title }: Props) {
-  const items = cvData.profile.skillProfile
+export function SkillHighlights({ cvData, locale, title }: Props) {
+  const items = cvData.header.skillHighlights
   if (items.length === 0) return null
 
   return (

@@ -133,7 +133,7 @@ function gatherIntervals(
 
 /** Business years in product-facing JavaScript roles (first frontend hire → today). */
 export function computeJavascriptProductYears(cv: CvData): number {
-  const start = parsePeriodStart(cv.profile.frontendCareerSince)
+  const start = parsePeriodStart(cv.header.frontendCareerSince)
   if (!start) return 0
   const end = new Date()
   if (end < start) return 0

@@ -1,4 +1,4 @@
-import './profile-photo-card.css'
+import './cv-photo-card.css'
 
 type Props = {
   photoSrc: string
@@ -7,18 +7,18 @@ type Props = {
   photoLoadError: boolean
 }
 
-export function ProfilePhotoCard({
+export function CvPhotoCard({
   photoSrc,
   photoAlt,
   onPhotoError,
   photoLoadError,
 }: Props) {
   return (
-    <div className="sidebar-profile-card profile-style-soft">
+    <div className="sidebar-cv-photo-card">
       <div className="sidebar-cover" />
       <div className="photo-wrap">
         {!photoLoadError ? (
-          <img src={photoSrc} alt={photoAlt} className="profile-photo" onError={onPhotoError} />
+          <img src={photoSrc} alt={photoAlt} className="cv-photo" onError={onPhotoError} />
         ) : (
           <div className="photo-placeholder">GB</div>
         )}

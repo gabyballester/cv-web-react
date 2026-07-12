@@ -1,7 +1,7 @@
 import type { CvData } from '../domain/cv-schema'
 import { l } from './cv-content-helpers'
 
-export const cvProfile = {
+export const cvHeader = {
   name: "Gabriel Ballester Morant",
   roleTag: "Frontend React Software Engineer",
   frontendCareerSince: "02/2019",
@@ -14,7 +14,7 @@ export const cvProfile = {
     l("Perfil polivalente, trabajo metódico y orientación a resultados.", "Versatile profile, methodical work, and a results-driven mindset."),
     l("Determinación constante para cumplir objetivos individuales y de equipo.", "Consistent determination to meet both individual and team goals.")
   ],
-  skillProfile: [
+  skillHighlights: [
     {
       label: l("JavaScript", "JavaScript"),
       tenureKey: "javascriptProduct",
@@ -67,4 +67,4 @@ export const cvProfile = {
     l("Francés B1 (MCER)", "French B1 (MCER)"),
     l("Alemán A1 (EOI)", "German A1 (EOI)")
   ]
-} satisfies CvData['profile']
+} satisfies CvData['header']

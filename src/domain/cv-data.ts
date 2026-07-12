@@ -4,7 +4,7 @@ import { cvSchema, type CvData } from './cv-schema'
 
 // Fixed UI/runtime settings that are not part of editable CV content.
 export const cvFixedConfig = {
-  profilePhotoPath: publicAsset('profile-photo.jpg'),
+  photoPath: publicAsset('profile-photo.jpg'),
   linkedInQrPath: publicAsset('linkedin-qr.png'),
   defaultLocale: 'es',
 } as const

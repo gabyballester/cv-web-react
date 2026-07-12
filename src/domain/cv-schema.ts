@@ -60,7 +60,7 @@ const courseCategorySchema = z.object({
   items: z.array(courseSchema),
 })
 
-export const skillProfileIconSchema = z.enum([
+export const skillHighlightIconSchema = z.enum([
   'javascript',
   'react',
   'typescript',
@@ -93,16 +93,16 @@ export const skillTenureKeySchema = z.enum([
   'restApis',
 ])
 
-const skillProfileEntrySchema = z.object({
+const skillHighlightEntrySchema = z.object({
   label: localizedTextSchema,
   /** Optional longer copy (not shown in compact CV layout). */
   tagline: localizedTextSchema.optional(),
   tenureKey: skillTenureKeySchema,
-  icon: skillProfileIconSchema,
+  icon: skillHighlightIconSchema,
 })
 
 export const cvSchema = z.object({
-  profile: z.object({
+  header: z.object({
     name: z.string(),
     roleTag: z.string(),
     /** First professional frontend role (MM/yyyy) — used for JS tenure and quote templates. */
@@ -113,7 +113,7 @@ export const cvSchema = z.object({
     linkedin: z.string(),
     quotes: z.array(localizedTextSchema),
     languages: z.array(localizedTextSchema),
-    skillProfile: z.array(skillProfileEntrySchema).default([]),
+    skillHighlights: z.array(skillHighlightEntrySchema).default([]),
   }),
   education: z.array(educationSchema),
   experiences: z.array(experienceSchema),
@@ -121,7 +121,7 @@ export const cvSchema = z.object({
 })
 
 export type CvData = z.infer<typeof cvSchema>
-export type SkillProfileEntry = CvData['profile']['skillProfile'][number]
+export type SkillHighlightEntry = CvData['header']['skillHighlights'][number]
 export type SkillTenureKey = z.infer<typeof skillTenureKeySchema>
 export type ExperienceGrouped = z.infer<typeof experienceGroupedSchema>
 export type ExperienceSingle = z.infer<typeof experienceSingleSchema>
