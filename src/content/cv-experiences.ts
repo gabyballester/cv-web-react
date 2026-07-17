@@ -23,7 +23,7 @@ export const cvExperiences = [
         role: ROLE_FRONTEND_REACT_SOFTWARE_ENGINEER,
         project: l("Onboarding", "Onboarding"),
         client: l("Openbank", "Openbank"),
-        period: period("04/2025", "Present"),
+        period: period("04/2025", "06/2026"),
         bullets: [
           l("Inicio del proyecto sobre arquitectura Hexagonal Openbank para el proceso completo de onboarding de clientes.", "Project inception on Openbank Hexagonal Architecture for the end-to-end customer onboarding journey."),
           l("Implementación de componentes reutilizables con React, TypeScript, Styled Components y ODS Open (Storybook).", "Built reusable UI with React, TypeScript, Styled Components, and ODS Open (Storybook)."),
