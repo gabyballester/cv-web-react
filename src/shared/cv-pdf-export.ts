@@ -1,4 +1,5 @@
 import type { jsPDF as JsPdfType } from 'jspdf'
+import { withSvgImgsRasterized } from './cv-pdf-rasterize-svg-imgs'
 
 const MM_PER_INCH = 25.4
 const CSS_REFERENCE_DPI = 96
@@ -43,7 +44,7 @@ function addImageFullA4(pdf: JsPdfType, imgData: string) {
 
 /**
  * Renders each `.a4-page` inside `paperStack` as one A4 PDF page and triggers download.
- * Captures at full A4 size (even on narrow viewports) with JPEG compression for a practical file size.
+ * SVG flag images are rasterized to PNG before html2canvas (browser-native SVG paint).
  */
 export async function downloadCvPdf(paperStack: HTMLElement, filename: string) {
   const pages = paperStack.querySelectorAll<HTMLElement>('.a4-page')
@@ -59,23 +60,29 @@ export async function downloadCvPdf(paperStack: HTMLElement, filename: string) {
 
   for (let i = 0; i < pages.length; i++) {
     const el = pages[i]
-    const canvas = await html2canvas(el, {
-      scale: PDF_RENDER_SCALE,
-      useCORS: true,
-      allowTaint: true,
-      backgroundColor: '#ffffff',
-      logging: false,
-      width: A4_WIDTH_CSS_PX,
-      height: A4_HEIGHT_CSS_PX,
-      onclone: (_doc, clonedPage) => {
-        applyPrintLikePageStyles(clonedPage)
-      },
-    })
+    const restoreSvgImgs = await withSvgImgsRasterized(el)
 
-    const imgData = canvas.toDataURL('image/jpeg', JPEG_QUALITY)
+    try {
+      const canvas = await html2canvas(el, {
+        scale: PDF_RENDER_SCALE,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        logging: false,
+        width: A4_WIDTH_CSS_PX,
+        height: A4_HEIGHT_CSS_PX,
+        onclone: (_doc, clonedPage) => {
+          applyPrintLikePageStyles(clonedPage)
+        },
+      })
 
-    if (i > 0) pdf.addPage()
-    addImageFullA4(pdf, imgData)
+      const imgData = canvas.toDataURL('image/jpeg', JPEG_QUALITY)
+
+      if (i > 0) pdf.addPage()
+      addImageFullA4(pdf, imgData)
+    } finally {
+      restoreSvgImgs()
+    }
   }
 
   pdf.save(filename)
