@@ -3,8 +3,10 @@
 Outplacement Right Management · consultora Patricia Alós  
 Contacto: patricia.alos@right.com · 678 608 121
 
-**Estado (jul 2026):** Word ATS **enviado** a Patricia (17 jul).  
-Fuente de verdad: [`cv-ats-word-es.md`](cv-ats-word-es.md)
+**Estado (21 jul 2026):** Word ATS **v3** en MD (feedback Patricia 21 jul). Pendiente Word + reenvío.  
+Fuente de verdad: [`cv-ats-word-es.md`](cv-ats-word-es.md) → sección **Texto para Word**.
+
+**Candidaturas:** convertir a **PDF** antes de subir a plataformas (indicación Patricia).
 
 **Siguiente hito:** feedback Patricia · reunión **1 sep 2026** (LinkedIn, Next, cloud).
 
@@ -14,7 +16,7 @@ Fuente de verdad: [`cv-ats-word-es.md`](cv-ats-word-es.md)
 
 | Archivo | Uso |
 |---------|-----|
-| [`cv-ats-word-es.md`](cv-ats-word-es.md) | **Versión enviada** (texto del Word ATS) |
+| [`cv-ats-word-es.md`](cv-ats-word-es.md) | **CV ATS v3** (casi final; feedback 21 jul) |
 | [`plan-tareas.md`](plan-tareas.md) | Checklist fases A/B/C |
 | [`correos-patricia.md`](correos-patricia.md) | Hilo de emails por fecha |
 | [`fuentes/`](fuentes/README.md) | Originales Patricia + email de alineación |

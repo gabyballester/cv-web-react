@@ -13,8 +13,12 @@ Alineado con la confirmación de Patricia (17 jul 2026) y la versión ATS enviad
 - [x] Base: `BORRADOR CV_ATS` + guía `FEED BACK`
 - [x] Redactar y afinar → [`cv-ats-word-es.md`](cv-ats-word-es.md)
 - [x] Word: `CV_ATS GABRIEL BALLESTER.docx` enviado (17 jul 2026, noche)
-- [ ] Confirmación de recepción / feedback Patricia
-- [ ] Incorporar feedback en MD + Word
+- [x] Feedback Patricia (20 jul 2026): logros, compactar skills/formación
+- [x] Incorporar feedback en MD → [`cv-ats-word-es.md`](cv-ats-word-es.md) (v2)
+- [x] Feedback Patricia (21 jul 2026): perfil breve, logro Openbank, Tecnologías; dudas de formato resueltas
+- [x] MD v3 → [`cv-ats-word-es.md`](cv-ats-word-es.md)
+- [ ] Regenerar Word v3 y reenviar a Patricia
+- [ ] En candidaturas: Word → PDF antes de subir a plataformas
 
 ### A2. Formación (en paralelo)
 
